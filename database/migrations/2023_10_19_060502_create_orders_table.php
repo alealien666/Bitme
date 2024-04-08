@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('id_lab')->nullable();
-            $table->foreignId('analisis_id')->nullable();
+            $table->foreignId('product_id');
             $table->date('order');
-            // $table->integer('lama_sewa'); ini di gunakan jika bisa menyewa beberapa hari langsung
             $table->integer('total_biaya');
             $table->enum('status', ['pending', 'approved']);
             $table->string('nama_pemesan');
-            $table->enum('jenis_pesanan', ['Sewa Lab', 'Jasa Analisis']);
             $table->string('no_telp');
             $table->string('alamat');
             $table->string('bukti_pembayaran')->nullable();

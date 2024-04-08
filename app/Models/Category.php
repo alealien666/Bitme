@@ -12,18 +12,9 @@ class Category extends Model
     protected $guarded = ['id'];
     protected $table = 'categories';
 
-    public function lab()
-    {
-        return $this->hasMany(Lab::class, 'category_id', 'id');
-    }
 
-    public function analisis()
+    public function product()
     {
-        return $this->hasMany(Analisis::class, 'category_id');
-    }
-
-    public function alat()
-    {
-        return $this->hasMany(Alat_Tambahan::class, 'category_id', 'id');
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 }

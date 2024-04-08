@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
+
+    public function qrCode()
+    {
+        return $this->hasMany(QRCode::class, 'user_id', 'id');
+    }
 }

@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alat_tambahans', function (Blueprint $table) {
+        Schema::create('qr_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->string('jenis_alat');
-            $table->integer('harga');
-            $table->integer('jumlah');
-            $table->string('foto')->nullable();
+            $table->foreignId('user_id');
+            $table->string('code')->unique();
+            $table->boolean('redeemed')->default(false);
+            $table->enum('status', ['baru', 'di tukar']);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alat_tambahans');
+        Schema::dropIfExists('qr_codes');
     }
 };

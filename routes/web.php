@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\user\LabController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\auth\LoginController;
@@ -105,3 +106,5 @@ Route::group(['middleware' => 'preventBack'], function () {
         });
     });
 });
+
+Route::get('/redeem', [QRCodeController::class, 'index']);
