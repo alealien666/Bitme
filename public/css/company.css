@@ -135,6 +135,11 @@ body {
     margin: 15px;
 }
 
+li {
+    /* background-color: red; */
+    margin: 0 auto;
+}
+
 #galleryProduct {
     padding-top: 10rem;
     padding-bottom: 5rem;

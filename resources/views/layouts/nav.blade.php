@@ -80,7 +80,7 @@
                         @yield('search')
                     </div>
                     <div class="d-flex align-items-center">
-                        <div class="dropdown d-md-none topbar-head-dropdown header-item">
+                        <div class="dropdown d-none topbar-head-dropdown header-item">
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                                 id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -91,9 +91,8 @@
                                 @yield('responsive-search')
                             </div>
                         </div>
-                        <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                            @yield('kategori')
-                        </div>
+
+
 
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
@@ -155,40 +154,26 @@
                 <div class="container">
                     <div id="two-column-menu">
                     </div>
-                    <ul class="navbar-nav m-auto" id="navbar-nav" style="width: 500px;">
-                        <li class="nav-item margin">
-                            <a class="nav-link menu-link {{ $title === 'Silab | Home' ? 'active' : '' }}"
-                                id="link" href="/home"> Home </a>
+                    <ul class="navbar-nav m-auto" id="navbar-nav" style="width: 400px;">
+                        <li class="nav-item">
+                            <a class="nav-link{{ $title === 'Silab | Home' ? 'active' : '' }}" id="link"
+                                href="/home"> Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#about" id="link">
+                            <a class="nav-link" href="#about" id="link">
                                 About
                             </a>
                         </li>
-                        <li class="nav-item margin">
-                            <a class="nav-link menu-link" href="#galleryProduct" id="link">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#galleryProduct" id="link">
                                 Product
                             </a>
                         </li>
-                        <li class="nav-item margin">
-                            <a class="nav-link menu-link" href="#contact" id="link">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact" id="link">
                                 Contact
                             </a>
                         </li>
-                        @auth
-                            <li class="nav-item margin">
-                                <a class="nav-link menu-link {{ $title === 'Silab | Sewa Lab' ? 'active' : '' }}"
-                                    href="/lab">
-                                    Sewa Lab
-                                </a>
-                            </li>
-                            <li class="nav-item margin">
-                                <a class="nav-link menu-link {{ $title === 'Silab | Sewa Jasa Analis' ? 'active' : '' }}"
-                                    href="/analisis">
-                                    Analisis
-                                </a>
-                            </li>
-                        @endauth
                     </ul>
                 </div>
                 <!-- Sidebar -->

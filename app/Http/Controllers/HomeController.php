@@ -7,12 +7,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('company', [
-            'title' => 'Silab | Home'
+            'title' => 'Elaku | Home'
         ]);
     }
 
     public function profil()
     {
-        return view('auth.user.profile', ['title' => 'Silab | Profile']);
+        return view('auth.user.profile', ['title' => 'Elaku | Profile']);
     }
 }

@@ -17,20 +17,8 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function lab()
+    public function product()
     {
-        return $this->belongsTo(Lab::class,  'id_lab', 'id_lab');
-    }
-    public function analisis()
-    {
-        return $this->belongsTo(Analisis::class, 'analisis_id', 'id');
-    }
-    public function alat()
-    {
-        return $this->belongsToMany(Alat_Tambahan::class, 'detail_orders', 'id_order', 'id_alat');
-    }
-    public function hasilAnalisis()
-    {
-        return $this->hasOne(HasilAnalisis::class, 'order_id', 'id');
+        return $this->belongsToMany(Product::class, 'detail_orders', 'order_ids', 'product_id');
     }
 }

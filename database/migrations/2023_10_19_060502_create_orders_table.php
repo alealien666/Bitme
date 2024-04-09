@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->date('order');
             $table->integer('total_biaya');
-            $table->enum('status', ['pending', 'approved']);
             $table->string('nama_pemesan');
             $table->string('no_telp');
             $table->string('alamat');

@@ -90,16 +90,13 @@ Route::group(['middleware' => 'preventBack'], function () {
         Route::middleware(['auth', 'role:2'])->group(function () {
             Route::get('/user', [HomeController::class, 'profil']);
             Route::get('/orderAnalisis/{slug}', [OrderController::class, 'showOrderAnalisis']);
-            Route::get('/order/{slug}', [OrderController::class, 'show'])->name('order')->middleware('CheckOrder');
+            Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
             Route::get('/lab', [LabController::class, 'index'])->name('index');
             Route::get('/produk/kategori/{category}', [LabController::class, 'kategori'])->name('produk.kategori');
-            Route::get('/analisis/kategori/{category}', [AnalisisController::class, 'kategori'])->name('analisis.kategori');
-            Route::get('/analisis', [AnalisisController::class, 'index'])->name('analisis');
             Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
             Route::get('/lab/searchTanggal', [LabController::class, 'tanggalCari'])->name('searchTanggal');
-            Route::post('/order', [OrderController::class, 'store'])->name('orderLab');
+            Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
             Route::post('/riwayat-pemesanan/upload/{id}', [OrderController::class, 'uploadPembayaran'])->name('upload-pembayaran');
-            Route::post('/orderAnalisis', [OrderController::class, 'orderAnalisis'])->name('order-analisis');
 
             // riwayat pemesanan
             Route::get('/user/riwayat-pemesanan', [riwayatPemesananController::class, 'index'])->name('riwayat-pemesanan.index');

@@ -31,7 +31,7 @@ class LoginController extends Controller
             } elseif ($user->role === 1) {
                 return redirect()->route('Admin.list-analises.index')->with('success', 'Berhasil Login');
             } else if ($user->role === 2) {
-                return redirect('/lab')->with('success', 'Berhasil Login');
+                return redirect('/home')->with('success', 'Berhasil Login');
             }
         } else {
             return back()->with('error', 'Gagal Melakukan Login. Periksa Email Dan Password Anda');

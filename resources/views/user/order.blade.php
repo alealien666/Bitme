@@ -1,4 +1,4 @@
-@include('layouts.silab')
+@include('layouts.nav')
 <div id="layout-wrapper">
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -16,7 +16,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="/silab">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="/lab">Sewa Lab</a></li>
+                                    <li class="breadcrumb-item"><a href="/lab">Product</a></li>
                                     <li class="breadcrumb-item active">Order</li>
                                 </ol>
                             </div>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-body checkout-tab">
 
-                                <form action="{{ route('orderLab') }}" method="post">
+                                <form action="{{ route('orderProduct') }}" method="post">
                                     @csrf
                                     <div class="step-arrow-nav mt-n3 mx-n3 mb-3">
 
@@ -57,13 +57,13 @@
 
                                     <div class="tab-content" id="pageProfile">
                                         <div class="tab-pane fade show active" id="pills-bill-info" role="tabpanel">
-                                            <div>
-                                                <h5 class="mb-1">{{ $lab->nama_lab }}</h5>
+                                            {{-- <div>
+                                                <h5 class="mb-1">{{ $pr->nama_lab }}</h5>
                                                 <input type="hidden" name="lab" id="lab"
                                                     value="{{ $lab->nama_lab }}">
                                                 <input type="hidden" name="id_lab" value="{{ $lab->id }}">
                                                 <p class="text-muted mb-4">Please fill all information below</p>
-                                            </div>
+                                            </div> --}}
 
                                             <div>
                                                 <div class="row">
@@ -110,7 +110,7 @@
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <div class="mb-3">
+                                                        {{-- <div class="mb-3">
                                                             <label for="order" class="form-label">Order</label>
                                                             @php
                                                                 $today = now()->format('Y-m-d');
@@ -119,7 +119,7 @@
                                                                 placeholder="Enter Date" class="form-control"
                                                                 min="{{ $today }}"
                                                                 @if (in_array(\Carbon\Carbon::parse($today)->format('Y-m-d'), $usedDate))  @endif required>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <label for="alamat" class="form-label">Alamat</label>
@@ -151,25 +151,12 @@
                                                                     {{ session('personal_info.nama') }}</span>
                                                                 <span
                                                                     class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-lab">Nama Lab :
-                                                                    {{ session('personal_info.lab') }}</span>
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
                                                                     id="shipping-notelp">No Telp :
                                                                     {{ session('personal_info.notelp') }}</span>
                                                                 <span
                                                                     class="text-muted fw-normal text-wrap mb-1 d-block"
                                                                     id="shipping-notelp">Alamat :
                                                                     {{ session('personal_info.alamat') }}</span>
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-jenispesanan">Jenis Pesanan :
-                                                                    {{ session('personal_info.jenispesanan') }}</span>
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-masuk">Tanggal Masuk :
-                                                                    {{ session('personal_info.masuk') }}</span>
-
                                                             </label>
                                                         </div>
 
@@ -178,12 +165,12 @@
                                                         <div class="form-check" id="scroll">
                                                             <label class="form-check-label" for="shippingAddress02">
                                                                 <span
-                                                                    class="mb-4 fw-semibold d-block text-uppercase">detail
-                                                                    alat yang di sewa</span><br>
-                                                                @foreach ($selectedAlat as $item)
+                                                                    class="mb-4 fw-semibold d-block text-uppercase">Detail
+                                                                    Produk Yang Di Beli</span><br>
+                                                                @foreach ($selectedProduct as $item)
                                                                     <span class="text-muted mb-2 d-block"
                                                                         id="shipping-alat">
-                                                                        Nama Alat: {{ $item->jenis_alat }}<br>
+                                                                        Nama Alat: {{ $item->nama_product }}<br>
                                                                         Harga: Rp.
                                                                         {{ number_format($item->harga, 0, ',', '.') }}<br>
                                                                         Jumlah:
@@ -258,22 +245,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($alat as $index => $alat)
-                                                @if ($alat->jumlah === 0)
+                                            @foreach ($product as $index => $product)
+                                                @if ($product->jumlah === 0)
                                                     <tr id="selected_alat" class="disable">
                                                         <td>
                                                             <h5 class="fs-15">
                                                                 <p class="text-dark" name="nama_alat">
-                                                                    {{ $alat->jenis_alat }}</p>
+                                                                    {{ $product->nama_product }}</p>
                                                             </h5>
                                                         </td>
                                                         <td class="text-end" name="harga_alat">
-                                                            {{ $alat->harga }}
+                                                            {{ $product->harga }}
                                                         </td>
                                                         <td>
                                                             <input type="checkbox" name="selected_alat[]"
-                                                                value="{{ $alat->id }}"
-                                                                data-harga="{{ $alat->harga }}"
+                                                                value="{{ $product->id }}"
+                                                                data-harga="{{ $product->harga }}"
                                                                 data-indeks="{{ $index }}" class="not">
                                                         </td>
                                                         <td>
@@ -282,7 +269,7 @@
                                                                     id="diss"><i class="bi bi-dash-lg"
                                                                         data-indeks="{{ $index }}"></i></button>
                                                                 <input type="hidden"
-                                                                    name="jumlah_alat[{{ $alat->id }}]"
+                                                                    name="jumlah_alat[{{ $product->id }}]"
                                                                     value="0" data-indeks="{{ $index }}">
                                                                 <span class="count">0</span>
                                                                 <button type="button" class="plus" id="dis"
@@ -290,7 +277,7 @@
                                                                         class="bi bi-plus-lg"></i></button>
                                                             </div>
                                                             <p class="text-muted text-center" id="stok">Stok:
-                                                                {{ $alat->jumlah }}
+                                                                {{ $product->stok }}
                                                             </p>
                                                         </td>
 
@@ -300,16 +287,16 @@
                                                         <td>
                                                             <h5 class="fs-15">
                                                                 <p class="text-dark" name="nama_alat">
-                                                                    {{ $alat->jenis_alat }}</p>
+                                                                    {{ $product->nama_product }}</p>
                                                             </h5>
                                                         </td>
                                                         <td class="text-end" name="harga_alat">
-                                                            {{ $alat->harga }}
+                                                            {{ $product->harga }}
                                                         </td>
                                                         <td>
                                                             <input type="checkbox" name="selected_alat[]"
-                                                                value="{{ $alat->id }}"
-                                                                data-harga="{{ $alat->harga }}"
+                                                                value="{{ $product->id }}"
+                                                                data-harga="{{ $product->harga }}"
                                                                 data-indeks="{{ $index }}">
                                                         </td>
                                                         <td>
@@ -318,7 +305,7 @@
                                                                         class="bi bi-dash-lg"
                                                                         data-indeks="{{ $index }}"></i></button>
                                                                 <input type="hidden"
-                                                                    name="jumlah_alat[{{ $alat->id }}]"
+                                                                    name="jumlah_alat[{{ $product->id }}]"
                                                                     value="0" data-indeks="{{ $index }}">
                                                                 <span class="count">0</span>
                                                                 <button type="button" class="plus"
@@ -326,8 +313,8 @@
                                                                         class="bi bi-plus-lg"></i></button>
                                                             </div>
                                                             <p class="text-muted text-center" id="stok"
-                                                                data-stok = "{{ $alat->jumlah }}">Stok:
-                                                                {{ $alat->jumlah }}
+                                                                data-stok = "{{ $product->jumlah }}">Stok:
+                                                                {{ $product->jumlah }}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -398,7 +385,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-<script>
+{{-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Tanggal-tanggal yang sudah dipesan (contoh data dari $usedDate)
         const tanggalDipesan = @json($usedDate);
@@ -422,4 +409,4 @@
             // }
         });
     });
-</script>
+</script> --}}

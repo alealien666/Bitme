@@ -4,26 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'category_id'];
+    protected $guarded = ['id'];
 
-    protected static function boot()
+
+    public function order()
     {
-        parent::boot();
-
-        static::creating(function ($product) {
-            $product->slug = Str::slug($product->nama_product);
-        });
-    }
-
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsToMany(Order::class, 'detail_orders', 'product_id', 'order_id');
     }
 }
