@@ -1,8 +1,8 @@
-@extends('layouts.silab')
+@extends('layouts.nav')
 @section('search')
-    <form class="app-search d-none d-md-block" action="{{ route('analisis') }}" method="get">
+    <form class="app-search d-none d-md-block" method="get">
         @csrf
-        <div class="position-relative d-flex">
+        <div class="position-relative d-none">
             <input type="search" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
                 id="search-options" value="{{ old('cari') }}">
             <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
@@ -13,12 +13,12 @@
     </form>
 @endsection
 @section('responsive-search')
-    <form class="p-3">
+    <form class="p-3 d-none">
         @csrf
         <div class="form-group m-0">
             <div class="input-group">
-                <input type="search" action="{{ route('index') }}" name="cari" class="form-control"
-                    placeholder="Search ..." aria-label="Recipient's username" value="{{ old('cari') }}">
+                <input type="search" name="cari" class="form-control" placeholder="Search ..."
+                    aria-label="Recipient's username" value="{{ old('cari') }}">
                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
             </div>
         </div>
@@ -56,7 +56,7 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="/lab">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
                                 <li class="breadcrumb-item"><a href="/user">User</a></li>
                                 <li class="breadcrumb-item active">Riwayat Pemesanan</li>
                             </ol>
@@ -72,7 +72,7 @@
                     <div class="text-center mb-4">
                         <h4 class="fw-semibold fs-23">Riwayat Pemesanan</h4>
                         <p class="text-muted mb-4 fs-15">
-                            pemesanan ruangan dan pemesanan analisis
+                            pemesanan Product Elaku
                         </p>
 
                         <div class="d-inline-flex">
@@ -121,11 +121,6 @@
                                             </div>
                                             <div class="card-body">
                                                 <table>
-                                                    <tr>
-                                                        <td>Tanggal Pemesanan</td>
-                                                        <td class="ps-3"> : </td>
-                                                        <td class="ps-3"> <b> {{ $list->order }} </b></td>
-                                                    </tr>
                                                     <tr>
                                                         <td>No pemesanan</td>
                                                         <td class="ps-3"> : </td>
@@ -293,30 +288,6 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Tanggal Pemesanan</td>
-                                            <td class="ps-3"> : </td>
-                                            <td class="ps-3"> <b> {{ $list->order }} </b></td>
-                                        </tr>
-                                        <tr>
-                                            @if ($list->jenis_pesanan === 'Sewa Lab')
-                                                <td>Nama Labs</td>
-                                                <td class="ps-3"> : </td>
-                                                <td class="ps-3">
-                                                    @foreach ($list['labs'] as $key => $labs)
-                                                        <b> {{ $labs->nama_lab }} </b>
-                                                    @endforeach
-                                                </td>
-                                            @else
-                                                <td>Jenis Analisis</td>
-                                                <td class="ps-3"> : </td>
-                                                <td class="ps-3">
-                                                    @foreach ($list['analis'] as $key => $analis)
-                                                        <b> {{ $analis->jenis_pengujian }} </b>
-                                                    @endforeach
-                                                </td>
-                                            @endif
-                                        </tr>
-                                        <tr>
                                             <td>Nama Pemesan</td>
                                             <td class="ps-3"> : </td>
                                             <td class="ps-3"><b> {{ $list->nama_pemesan }} </b></td>
@@ -329,35 +300,33 @@
                                     </table>
                                 </div>
                                 <hr>
-                                @if ($list->jenis_pesanan === 'Sewa Lab')
-                                    <div class="col-md-12">
-                                        <div class="list-header mb-3">
-                                            <b>List Jenis Alat &nbsp;&nbsp;&nbsp; :</b>
-                                        </div>
-                                        <ul class="list-content mx-0" id="listTotal">
-                                            <li class="list-unstyled" id="listItem">
-                                                <ul class="list-inline list1" style="margin-left: -30px;">
-                                                    <table>
-                                                        <tr class="text-center">
-                                                            <th>Nama Alat</th>
-                                                            <th>Jumlah</th>
-                                                            <th>Harga</th>
-                                                        </tr>
-                                                        @foreach ($list['alat'] as $key => $alat)
-                                                            <tr>
-                                                                <td style="ps-5 pe-5">{{ $alat->jenis_alat }}</td>
-                                                                <td class="text-center">{{ $alat->jumlah_alat }}</td>
-                                                                <td class="ps-5 pe-5">
-                                                                    Rp.{{ number_format($alat->harga, 0, ',', '.') }}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </table>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                <div class="col-md-12">
+                                    <div class="list-header mb-3">
+                                        <b>List Product &nbsp;&nbsp;&nbsp; :</b>
                                     </div>
-                                @endif
+                                    <ul class="list-content mx-0" id="listTotal">
+                                        <li class="list-unstyled" id="listItem">
+                                            <ul class="list-inline list1" style="margin-left: -30px;">
+                                                <table class="w-100">
+                                                    <tr class="text-center">
+                                                        <th>Product</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Harga</th>
+                                                    </tr>
+                                                    @foreach ($list['product'] as $key => $product)
+                                                        <tr>
+                                                            <td style="ps-5 pe-5">{{ $product->nama_product }}</td>
+                                                            <td class="text-center">{{ $product->jumlah_beli }}</td>
+                                                            <td class="ps-5 pe-5">
+                                                                Rp.{{ number_format($product->harga, 0, ',', '.') }}
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </table>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="text-end pt-3">
                                     total pembayaran : &nbsp;&nbsp;&nbsp; <b>Rp.
                                         {{ number_format($list->total_biaya, 0, ',', '.') }}</b>

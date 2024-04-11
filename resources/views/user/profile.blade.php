@@ -1,8 +1,8 @@
-@extends('layouts.silab')
+@extends('layouts.nav')
 @section('search')
-    <form class="app-search d-none d-md-block" action="{{ route('analisis') }}" method="get">
+    <form class="app-search d-none d-md-block">
         @csrf
-        <div class="position-relative d-flex">
+        <div class="position-relative d-none">
             <input type="search" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
                 id="search-options" value="{{ old('cari') }}">
             <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
@@ -13,12 +13,12 @@
     </form>
 @endsection
 @section('responsive-search')
-    <form class="p-3">
+    <form class="p-3 d-none">
         @csrf
         <div class="form-group m-0">
             <div class="input-group">
-                <input type="search" action="{{ route('analisis') }}" name="cari" class="form-control"
-                    placeholder="Search ..." aria-label="Recipient's username" value="{{ old('cari') }}">
+                <input type="search"name="cari" class="form-control" placeholder="Search ..."
+                    aria-label="Recipient's username" value="{{ old('cari') }}">
                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
             </div>
         </div>

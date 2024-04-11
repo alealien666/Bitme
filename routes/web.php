@@ -90,10 +90,7 @@ Route::group(['middleware' => 'preventBack'], function () {
             Route::get('/user', [HomeController::class, 'profil']);
             Route::get('/orderAnalisis/{slug}', [OrderController::class, 'showOrderAnalisis']);
             Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
-            Route::get('/lab', [LabController::class, 'index'])->name('index');
-            Route::get('/produk/kategori/{category}', [LabController::class, 'kategori'])->name('produk.kategori');
             Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-            Route::get('/lab/searchTanggal', [LabController::class, 'tanggalCari'])->name('searchTanggal');
             Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
             Route::post('/riwayat-pemesanan/upload/{id}', [OrderController::class, 'uploadPembayaran'])->name('upload-pembayaran');
 

@@ -14,11 +14,9 @@ class riwayatPemesananController extends Controller
     {
         $listPemesanan = Order::select(
             'orders.id as id_pemesanan',
-            'orders.order',
             'orders.status',
             'orders.total_biaya',
             'orders.nama_pemesan',
-            'orders.jenis_pesanan',
             'orders.no_telp',
             'orders.bukti_pembayaran',
             'orders.expired_at',
@@ -29,36 +27,22 @@ class riwayatPemesananController extends Controller
             ->get();
 
         foreach ($listPemesanan as $index => $value) {
-            $labs = Order::join('labs', 'labs.id', '=', 'orders.id_lab')
+
+            $product = detail_order::join('products', 'products.id', '=', 'detail_orders.product_id')
                 ->select(
-                    'labs.nama_lab'
+                    'products.nama_product',
+                    'products.harga',
+                    'detail_orders.jumlah_beli'
                 )
-                ->groupBy('labs.nama_lab')
-                ->where('orders.id', $value->id_pemesanan)
+                ->where('detail_orders.order_id', $value->id_pemesanan)
                 ->get();
 
-            $analis = Order::join('analises', 'analises.id', '=', 'orders.analisis_id')
-                ->select('analises.jenis_pengujian')
-                ->groupBy('analises.jenis_pengujian')
-                ->where('orders.id', $value->id_pemesanan)->get();
-
-            $alat = detail_order::join('alat_tambahans', 'alat_tambahans.id', '=', 'detail_orders.id_alat')
-                ->select(
-                    'alat_tambahans.jenis_alat',
-                    'alat_tambahans.harga',
-                    'detail_orders.jumlah_alat'
-                )
-                ->where('detail_orders.id_order', $value->id_pemesanan)
-                ->get();
-
-            $listPemesanan[$index]->labs = $labs;
-            $listPemesanan[$index]->analis = $analis;
-            $listPemesanan[$index]->alat = $alat;
+            $listPemesanan[$index]->product = $product;
         }
         $jumlahPending = count($listPemesanan->where('status', 'pending'));
         $jumlahApproved = count($listPemesanan->where('status', 'approved'));
-        return view('auth.user.riwayatPemesanan', compact('listPemesanan', 'jumlahPending', 'jumlahApproved'), [
-            'title' => 'Silab | Riwayat Pemesanan'
+        return view('user.riwayatPemesanan', compact('listPemesanan', 'jumlahPending', 'jumlahApproved'), [
+            'title' => 'Elaku | Riwayat Pemesanan'
         ]);
     }
 }
