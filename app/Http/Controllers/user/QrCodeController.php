@@ -8,26 +8,25 @@ use Illuminate\Http\Request;
 
 class QrCodeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $qrCode = QRCode::get();
-        return view('redeem', compact('qrCode'));
+        $qrCode = QrCode::with('user')->get();
+        return view('redeem', compact('qrCode'))->with('title', 'Elaku | Redeem');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
+    }
+
+    public function store(Request $request)
+    {
         $request->validate([
-            'code' => 'required|unique:qr_codes|exists:qr_codes,code|redeemed:false'
+            'code' => 'required|unique:qr_codes'
         ]);
 
         QrCode::create([
-            'code' => $request->code
+            'code' => $request->code,
+            'user_id' => auth()->user()->id,
         ]);
 
         $qrcode = QRCode::where('code', $request->code)->first();
@@ -38,41 +37,25 @@ class QrCodeController extends Controller
         return redirect()->back()->with('success', 'berhasil menyimpan Qr Code');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function show($kode)
     {
-        //
+        $qrCode = QrCode::with('user')->get();
+        return view('redeem', compact('kode', 'qrCode'))->with('title', 'Elaku | Redeem');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(QrCode $qrCode)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(QrCode $qrCode)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, QrCode $qrCode)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(QrCode $qrCode)
     {
         //

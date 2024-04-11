@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 
 class GenerateQrController extends Controller
 {
@@ -25,13 +24,5 @@ class GenerateQrController extends Controller
 
         // Tampilkan view dengan QR code
         return view('qr', ['qrCodeFileName' => $filename]);
-    }
-
-    public function show($kode)
-    {
-        // Di sini Anda bisa melakukan validasi kode, misalnya memeriksa apakah kode tersebut valid dalam sistem Anda
-        // Kemudian Anda dapat melakukan tindakan yang sesuai, seperti memberikan diskon atau mengonfirmasi pembelian
-
-        return view('redeem', compact('kode'));
     }
 }

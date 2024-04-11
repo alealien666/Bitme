@@ -154,7 +154,7 @@
                 <div class="container">
                     <div id="two-column-menu">
                     </div>
-                    <ul class="navbar-nav m-auto" id="navbar-nav" style="width: 400px;">
+                    <ul class="navbar-nav m-auto" id="navbar-nav" style="width: 500px;">
                         <li class="nav-item">
                             <a class="nav-link{{ $title === 'Silab | Home' ? 'active' : '' }}" id="link"
                                 href="/home"> Home </a>
@@ -174,6 +174,13 @@
                                 Contact
                             </a>
                         </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/redeem" id="link">
+                                    Redeem
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
                 <!-- Sidebar -->

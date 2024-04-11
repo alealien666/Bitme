@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\user\QRCodeController;
+use App\Http\Controllers\user\QrCodeController;
 use App\Http\Controllers\GenerateQRController;
 use App\Http\Controllers\user\LabController;
 use App\Http\Controllers\Admin\UserController;
@@ -103,6 +103,7 @@ Route::group(['middleware' => 'preventBack'], function () {
     });
 });
 
-Route::get('/redeem', [QRCodeController::class, 'index']);
+Route::get('/redeem', [QrCodeController::class, 'index']);
 Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);
-Route::get('/redeem/{kode}', [GenerateQRController::class, 'show'])->name('redeem.page');
+Route::get('/redeem/{kode}', [QrCodeController::class, 'show'])->name('redeem.page');
+Route::post('/postKode', [QRCodeController::class, 'store'])->name('redeemKode');
