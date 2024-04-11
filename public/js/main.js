@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotalElement = document.getElementById('subtotal')
     const totalElement = document.getElementById('total')
     const disableButtonStok = document.querySelectorAll('#dis,#diss,.not')
-    // Daftar alat
-    const alatCounters = document.querySelectorAll('.jumlah')
+    const productCounters = document.querySelectorAll('.jumlah')
     const plusButtons = document.querySelectorAll('.plus')
     const minusButtons = document.querySelectorAll('.min')
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     plusButtons.forEach(function (button, index) {
         let stock = document.querySelectorAll('#stok')[index].getAttribute('data-stok')
-        const inputJumlah = alatCounters[index].querySelector('input[type="hidden"]')
+        const inputJumlah = productCounters[index].querySelector('input[type="hidden"]')
         button.addEventListener('click', function () {
             if (inputJumlah.value === stock) {
                 button.style.backgroundColor = 'white'
@@ -38,8 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (checkbox.checked) {
                 const harga = parseFloat(checkbox.getAttribute('data-harga'))
                 if (!isNaN(harga)) {
-                    const count = parseInt(alatCounters[index].querySelector('.count').textContent, 10)
+                    const count = parseInt(productCounters[index].querySelector('.count').textContent, 10)
                     subtotal += harga * count
+                    console.log(harga)
                 }
             }
         })
@@ -53,26 +53,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function incrementCount(index) {
-        const jumlah = alatCounters[index].querySelector('.count')
+        const jumlah = productCounters[index].querySelector('.count')
         let count = parseInt(jumlah.textContent, 10) //ngekonversi bilangan bulat desimal basis 10
         count++
         jumlah.textContent = count
 
-        const inputJumlah = alatCounters[index].querySelector('input[type="hidden"]')
+        const inputJumlah = productCounters[index].querySelector('input[type="hidden"]')
         inputJumlah.value = count
         // console.log(inputJumlah)
         updateSubtotal()
 
     }
 
+
     function decrementCount(index) {
-        const jumlah = alatCounters[index].querySelector('.count')
+        const jumlah = productCounters[index].querySelector('.count')
         let count = parseInt(jumlah.textContent, 10)
         if (count > 0) {
             count--
             jumlah.textContent = count
 
-            const inputJumlah = alatCounters[index].querySelector('input[type="hidden"]')
+            const inputJumlah = productCounters[index].querySelector('input[type="hidden"]')
             inputJumlah.value = count
 
             updateSubtotal()
@@ -101,11 +102,11 @@ const saveReload = () => {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
     const disableButtonStok = document.querySelectorAll('.plus, .min')
     const buttonSubmitPressed = JSON.parse(localStorage.getItem('buttonSubmitPressed'))
-    const tabelAlat = document.getElementById('table')
+    const tabelProduct = document.getElementById('table')
 
 
     if (buttonSubmitPressed === true) {
-        tabelAlat.style.opacity = 0.5
+        tabelProduct.style.opacity = 0.5
 
         disableButtonStok.forEach(disableButton => {
             disableButton.disabled = true
@@ -140,9 +141,9 @@ const redirectPage = () => {
     const buttonPesanSekarang = document.getElementById('buttonPesan')
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
     const disableButtonStok = document.querySelectorAll('.plus, .min')
-    const tabelAlat = document.getElementById('table')
+    const tabelProduct = document.getElementById('table')
 
-    tabelAlat.style.opacity = 1
+    tabelProduct.style.opacity = 1
 
     disableButtonStok.forEach(disablebutton => {
         disablebutton.disabled = false

@@ -27,7 +27,7 @@
                 <!-- end page title -->
 
                 <div class="row">
-                    <div class="col-xl-8">
+                    <div class="col-xl-7">
                         <div class="card">
                             <div class="card-body checkout-tab">
 
@@ -98,29 +98,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label for="billinginfo-phone" class="form-label">Jenis
-                                                                Pesanan</label>
-                                                            <input type="text" class="form-controll" name="jenis"
-                                                                id="jenis" value="Sewa Lab" disabled>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        {{-- <div class="mb-3">
-                                                            <label for="order" class="form-label">Order</label>
-                                                            @php
-                                                                $today = now()->format('Y-m-d');
-                                                            @endphp
-                                                            <input type="date" name="masuk" id="masuk"
-                                                                placeholder="Enter Date" class="form-control"
-                                                                min="{{ $today }}"
-                                                                @if (in_array(\Carbon\Carbon::parse($today)->format('Y-m-d'), $usedDate))  @endif required>
-                                                        </div> --}}
-                                                    </div>
                                                     <div class="col-lg-6">
                                                         <label for="alamat" class="form-label">Alamat</label>
                                                         <input type="text" name="alamat" class="form-control"
@@ -169,12 +146,13 @@
                                                                     Produk Yang Di Beli</span><br>
                                                                 @foreach ($selectedProduct as $item)
                                                                     <span class="text-muted mb-2 d-block"
-                                                                        id="shipping-alat">
-                                                                        Nama Alat: {{ $item->nama_product }}<br>
+                                                                        id="shipping-product">
+                                                                        Nama Product: {{ $item->nama_product }}<br>
+                                                                        Rasa: {{ $item->rasa }}<br>
                                                                         Harga: Rp.
                                                                         {{ number_format($item->harga, 0, ',', '.') }}<br>
                                                                         Jumlah:
-                                                                        {{-- {{ session('jumlah_alat')[$item->id] }} --}}
+                                                                        {{ session('jumlah_beli')[$item->id] }}
                                                                     </span>
                                                                     <hr>
                                                                 @endforeach
@@ -224,12 +202,12 @@
                     </div>
                     <!-- end col -->
 
-                    <div class="col-xl-4">
+                    <div class="col-xl-5">
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <h5 class="card-title mb-0">Pilihan Alat</h5>
+                                        <h5 class="card-title mb-0">Pilihan Product</h5>
                                     </div>
                                 </div>
                             </div>
@@ -239,26 +217,29 @@
                                     <table class="table table-borderless align-middle mb-0" id="table">
                                         <thead class="table-light text-muted">
                                             <tr>
-                                                <th scope="col">Jenis Alat</th>
+                                                <th scope="col">Nama Product</th>
+                                                <th scope="col">Rasa</th>
                                                 <th scope="col" class="text-start" colspan="2">Harga</th>
                                                 <th scope="col">Jumlah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($product as $index => $product)
-                                                @if ($product->jumlah === 0)
-                                                    <tr id="selected_alat" class="disable">
+                                                @if ($product->stok === 0)
+                                                    <tr id="selected_product" class="disable border-bottom">
                                                         <td>
-                                                            <h5 class="fs-15">
-                                                                <p class="text-dark" name="nama_alat">
-                                                                    {{ $product->nama_product }}</p>
+                                                            <h5 class="text-center" name="nama_product">
+                                                                {{ $product->nama_product }}
                                                             </h5>
                                                         </td>
-                                                        <td class="text-end" name="harga_alat">
+                                                        <td class="text-end" name="rasa">
+                                                            {{ $product->rasa }}
+                                                        </td>
+                                                        <td class="text-end" name="harga_product">
                                                             {{ $product->harga }}
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="selected_alat[]"
+                                                            <input type="checkbox" name="selected_product[]"
                                                                 value="{{ $product->id }}"
                                                                 data-harga="{{ $product->harga }}"
                                                                 data-indeks="{{ $index }}" class="not">
@@ -269,7 +250,7 @@
                                                                     id="diss"><i class="bi bi-dash-lg"
                                                                         data-indeks="{{ $index }}"></i></button>
                                                                 <input type="hidden"
-                                                                    name="jumlah_alat[{{ $product->id }}]"
+                                                                    name="jumlah_beli[{{ $product->id }}]"
                                                                     value="0" data-indeks="{{ $index }}">
                                                                 <span class="count">0</span>
                                                                 <button type="button" class="plus" id="dis"
@@ -283,18 +264,20 @@
 
                                                     </tr>
                                                 @else
-                                                    <tr id="selected_alat">
+                                                    <tr id="selected_product" class="border-bottom">
                                                         <td>
-                                                            <h5 class="fs-15">
-                                                                <p class="text-dark" name="nama_alat">
-                                                                    {{ $product->nama_product }}</p>
+                                                            <h5 class="fs-15" name="nama_product">
+                                                                {{ $product->nama_product }}
                                                             </h5>
                                                         </td>
-                                                        <td class="text-end" name="harga_alat">
+                                                        <td class="text-end" name="rasa">
+                                                            {{ $product->rasa }}
+                                                        </td>
+                                                        <td class="text-end" name="harga_product">
                                                             {{ $product->harga }}
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="selected_alat[]"
+                                                            <input type="checkbox" name="selected_product[]"
                                                                 value="{{ $product->id }}"
                                                                 data-harga="{{ $product->harga }}"
                                                                 data-indeks="{{ $index }}">
@@ -305,7 +288,7 @@
                                                                         class="bi bi-dash-lg"
                                                                         data-indeks="{{ $index }}"></i></button>
                                                                 <input type="hidden"
-                                                                    name="jumlah_alat[{{ $product->id }}]"
+                                                                    name="jumlah_beli[{{ $product->id }}]"
                                                                     value="0" data-indeks="{{ $index }}">
                                                                 <span class="count">0</span>
                                                                 <button type="button" class="plus"
@@ -313,8 +296,8 @@
                                                                         class="bi bi-plus-lg"></i></button>
                                                             </div>
                                                             <p class="text-muted text-center" id="stok"
-                                                                data-stok = "{{ $product->jumlah }}">Stok:
-                                                                {{ $product->jumlah }}
+                                                                data-stok = "{{ $product->stok }}">Stok:
+                                                                {{ $product->stok }}
                                                             </p>
                                                         </td>
                                                     </tr>

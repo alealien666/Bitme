@@ -18,8 +18,7 @@ class OrderController extends Controller
         $request->validate([
             "nama" => "required|max:255|string",
             "notelp" => "required|numeric",
-            "masuk" => ["required", "date", "after_or_equal:" . Carbon::now()->toDateString()],
-            "selected_alat" => "required|array",
+            "selected_product" => "required|array",
             "alamat" => "required|string",
             "jumlah_beli" => "required|array",
         ]);
@@ -28,7 +27,6 @@ class OrderController extends Controller
         $selectedProduct = $request->input('selected_product');
         $totalCost = 0;
 
-        // $waktuOrder = now();
         session([
             'personal_info' => [
                 'nama' => $request->input('nama'),
@@ -48,7 +46,6 @@ class OrderController extends Controller
 
         $order = new Order();
         $order->user_id = auth()->user()->id;
-        $order->product_id = $request->input('product_id');
         $order->alamat = $request->input('alamat');
         $order->nama_pemesan = $request->input('nama');
         $order->no_telp = $request->input('notelp');
@@ -60,7 +57,7 @@ class OrderController extends Controller
         foreach ($selectedProduct as $index => $selectedProductId) {
             if (is_numeric($selectedProductId)) {
                 $jumlahBeli = isset($new_array[$selectedProductId]) ? $new_array[$selectedProductId] : 0;
-                $order->alat()->attach($selectedProductId, [
+                $order->product()->attach($selectedProductId, [
                     'jumlah_beli' => $jumlahBeli
                 ]);
                 $product = Product::find($selectedProductId);
@@ -68,7 +65,7 @@ class OrderController extends Controller
                 $totalBiaya = $harga * $jumlahBeli;
                 $totalCost += $totalBiaya;
 
-                $product->update(['stok' => $product->jumlah - $jumlahBeli]);
+                $product->update(['stok' => $product->stok - $jumlahBeli]);
                 $jumlahBeliArray[$selectedProductId] = $jumlahBeli;
             }
         }
@@ -90,9 +87,9 @@ class OrderController extends Controller
         // $product = Product::where('slug', $slug)->firstOrFail();
         // $categoryProduct = $product->category;
         $product = Product::all();
-        $product->each(function ($product) {
-            $product->harga = number_format($product->harga, 0, ',', '.');
-        });
+        // $product->each(function ($product) {
+        //     $product->harga = number_format($product->harga, 0, ',', '.');
+        // });
 
         return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Elaku | Order');
     }
