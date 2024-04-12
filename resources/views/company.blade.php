@@ -1,6 +1,6 @@
 @extends('layouts.nav')
 @section('search')
-    <form class="app-search d-none d-md-block" action="{{ route('index') }}" method="get">
+    <form class="app-search d-none d-md-block" method="get">
         @csrf
         <div class="position-relative d-none">
             <input type="text" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
@@ -17,8 +17,8 @@
         @csrf
         <div class="form-group m-0">
             <div class="input-group">
-                <input type="search" action="{{ route('index') }}" name="cari" class="form-control"
-                    placeholder="Search ..." aria-label="Recipient's username" value="{{ old('cari') }}">
+                <input type="search" name="cari" class="form-control" placeholder="Search ..."
+                    aria-label="Recipient's username" value="{{ old('cari') }}">
                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
             </div>
         </div>
@@ -163,8 +163,8 @@
                 data-aos-duration="1000">
             <img src="{{ asset('img/company/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up"
                 data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg4.jpg') }}" alt="foto3" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg4.jpg') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
             <img src="{{ asset('img/company/bg5.jpg') }}" alt="foto4" class="contentGallery"
                 data-aos="zoom-in-up" data-aos-duration="1000">
             <img src="{{ asset('img/company/bg6.jpg') }}" alt="foto5" class="contentGallery"

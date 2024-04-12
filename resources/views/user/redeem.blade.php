@@ -1,5 +1,17 @@
 @extends('layouts.nav')
 @section('konten')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <h3 style="margin-top: 10rem">Kumpulkan 10 Kode Lalu Tukarkan Dan Dapatkan Bingkisan Menarik</h3>
     <div class="row">
         <div class="col-md-6">
@@ -33,4 +45,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = '{{ session('success') }}';
+            var errorMessage = '{{ session('error') }}';
+
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: successMessage
+                });
+            }
+
+            if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: errorMessage
+                });
+            }
+        });
+    </script>
 @endsection
