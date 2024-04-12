@@ -23,7 +23,7 @@ class QrCodeController extends Controller
         $request->validate([
             'code' => 'required|unique:qr_codes'
         ], [
-            'code.unique' => 'Kode QR ini sudah pernah digunakan sebelumnya.'
+            'code.unique' => 'Kode QR ini sudah pernah digunakan sebelumnya. awokaokwokoakowk'
         ]);
 
         QrCode::create([
