@@ -27,6 +27,7 @@ class QrCodeController extends Controller
         QrCode::create([
             'code' => $request->code,
             'user_id' => auth()->user()->id,
+            'token' => 908008,
         ]);
 
         $qrcode = QRCode::where('code', $request->code)->first();
