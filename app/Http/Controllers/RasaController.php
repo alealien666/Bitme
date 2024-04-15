@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Rasa;
 use Illuminate\Http\Request;
-use App\Models\HasilAnalisis;
-use App\Http\Controllers\Controller;
 
-class HasilAnalisisController extends Controller
+class RasaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -36,16 +33,15 @@ class HasilAnalisisController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show($id)
-    // {
-    //     $hasilAnalis = Order::findOrFail($id);
-    //     return view('admin.tampilan.pemesanan', compact('hasilAnalisis'));
-    // }
+    public function show(Rasa $rasa)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HasilAnalisis $hasilAnalisis)
+    public function edit(Rasa $rasa)
     {
         //
     }
@@ -53,7 +49,7 @@ class HasilAnalisisController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, HasilAnalisis $hasilAnalisis)
+    public function update(Request $request, Rasa $rasa)
     {
         //
     }
@@ -61,7 +57,7 @@ class HasilAnalisisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HasilAnalisis $hasilAnalisis)
+    public function destroy(Rasa $rasa)
     {
         //
     }

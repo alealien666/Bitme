@@ -110,8 +110,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit"><a href="/lab"
-                                                    class="text-white">Log in</a></button>
+                                            <button class="btn btn-success w-100" type="submit">Log In</button>
                                         </div>
                                     </form>
                                 </div>

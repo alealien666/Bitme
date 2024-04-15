@@ -57,14 +57,6 @@
 
                                     <div class="tab-content" id="pageProfile">
                                         <div class="tab-pane fade show active" id="pills-bill-info" role="tabpanel">
-                                            {{-- <div>
-                                                <h5 class="mb-1">{{ $pr->nama_lab }}</h5>
-                                                <input type="hidden" name="lab" id="lab"
-                                                    value="{{ $lab->nama_lab }}">
-                                                <input type="hidden" name="id_lab" value="{{ $lab->id }}">
-                                                <p class="text-muted mb-4">Please fill all information below</p>
-                                            </div> --}}
-
                                             <div>
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -91,14 +83,13 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="mb-3">
-                                                            <label for="billinginfo-email"
-                                                                class="form-label">Email</label>
-                                                            <input type="email" class="form-controll" id="email"
+                                                            <label for="email" class="form-label">Email</label>
+                                                            <input type="email" class="form-control" id="email"
                                                                 value="{{ auth()->user()->email }}" disabled>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-lg-6">
+                                                    <div class="col-sm-6">
                                                         <label for="alamat" class="form-label">Alamat</label>
                                                         <input type="text" name="alamat" class="form-control"
                                                             id="alamat" placeholder="Enter Address" required>
@@ -148,7 +139,7 @@
                                                                     <span class="text-muted mb-2 d-block"
                                                                         id="shipping-product">
                                                                         Nama Product: {{ $item->nama_product }}<br>
-                                                                        Rasa: {{ $item->rasa }}<br>
+                                                                        Rasa: {{ $item->rasa->varian_rasa }}<br>
                                                                         Harga: Rp.
                                                                         {{ number_format($item->harga, 0, ',', '.') }}<br>
                                                                         Jumlah:
@@ -218,9 +209,8 @@
                                         <thead class="table-light text-muted">
                                             <tr>
                                                 <th scope="col">Nama Product</th>
-                                                <th scope="col">Rasa</th>
-                                                <th scope="col" class="text-start" colspan="2">Harga</th>
-                                                <th scope="col">Jumlah</th>
+                                                <th scope="col">Stock</th>
+                                                <th scope="col">Pesan Product </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -228,40 +218,107 @@
                                                 @if ($product->stok === 0)
                                                     <tr id="selected_product" class="disable border-bottom">
                                                         <td>
-                                                            <h5 class="text-center" name="nama_product">
+                                                            <h5 class="fs-15" name="nama_product">
                                                                 {{ $product->nama_product }}
                                                             </h5>
                                                         </td>
-                                                        <td class="text-end" name="rasa">
-                                                            {{ $product->rasa }}
-                                                        </td>
-                                                        <td class="text-end" name="harga_product">
-                                                            {{ $product->harga }}
+                                                        <td>
+                                                            <p>{{ $product->stok }}</p>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="selected_product[]"
-                                                                value="{{ $product->id }}"
-                                                                data-harga="{{ $product->harga }}"
-                                                                data-indeks="{{ $index }}" class="not">
-                                                        </td>
-                                                        <td>
-                                                            <div class="jumlah">
-                                                                <button type="button" class="min"
-                                                                    id="diss"><i class="bi bi-dash-lg"
-                                                                        data-indeks="{{ $index }}"></i></button>
-                                                                <input type="hidden"
-                                                                    name="jumlah_beli[{{ $product->id }}]"
-                                                                    value="0" data-indeks="{{ $index }}">
-                                                                <span class="count">0</span>
-                                                                <button type="button" class="plus" id="dis"
-                                                                    data-indeks="{{ $index }}"><i
-                                                                        class="bi bi-plus-lg"></i></button>
-                                                            </div>
-                                                            <p class="text-muted text-center" id="stok">Stok:
-                                                                {{ $product->stok }}
-                                                            </p>
-                                                        </td>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary w-100 hx">
+                                                                Detail Produk
+                                                            </button>
 
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Detail Produk
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="d-flex">
+                                                                                <input type="checkbox"
+                                                                                    name="selected_product[]"
+                                                                                    value="{{ $product->id }}"
+                                                                                    data-harga="{{ $product->harga }}"
+                                                                                    data-indeks="{{ $index }}"
+                                                                                    class="form-check-input ms-3 p-2">
+                                                                                <p class="ms-2">Checklist untuk
+                                                                                    memesan produk ini
+                                                                                </p>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-10">
+
+
+                                                                                    <p>Nama Produk:
+                                                                                        {{ $product->nama_product }}
+                                                                                    </p>
+
+
+                                                                                    <p>Harga: {{ $product->harga }}</p>
+
+
+                                                                                    <p>Varian Rasa:
+                                                                                        {{ $product->rasa->varian_rasa }}
+                                                                                    </p>
+
+                                                                                    <p>Deskripsi:
+                                                                                        {{ $product->deskripsi }}</p>
+
+                                                                                    <p>Tanggal Expired:
+                                                                                        {{ $product->tanggal_expired }}
+                                                                                    </p>
+
+
+                                                                                </div>
+                                                                                <p class="text-center mt-5">Jumlah</p>
+                                                                                <div class="col-md-2">
+                                                                                    <div class="jumlah">
+                                                                                        <button type="button"
+                                                                                            class="min"><i
+                                                                                                class="bi bi-dash-lg"
+                                                                                                data-indeks="{{ $index }}"></i></button>
+                                                                                        <input type="hidden"
+                                                                                            name="jumlah_beli[{{ $product->id }}]"
+                                                                                            value="0"
+                                                                                            data-indeks="{{ $index }}">
+                                                                                        <span class="count">0</span>
+                                                                                        <button type="button"
+                                                                                            class="plus"
+                                                                                            data-indeks="{{ $index }}"><i
+                                                                                                class="bi bi-plus-lg"></i></button>
+                                                                                    </div>
+                                                                                    <p class="text-muted text-center"
+                                                                                        id="stok"
+                                                                                        data-stok = "{{ $product->stok }}">
+                                                                                        Stok:
+                                                                                        {{ $product->stok }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary"
+                                                                                data-bs-dismiss="modal">Pesan</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 @else
                                                     <tr id="selected_product" class="border-bottom">
@@ -270,35 +327,110 @@
                                                                 {{ $product->nama_product }}
                                                             </h5>
                                                         </td>
-                                                        <td class="text-end" name="rasa">
-                                                            {{ $product->rasa }}
-                                                        </td>
-                                                        <td class="text-end" name="harga_product">
-                                                            {{ $product->harga }}
+                                                        <td>
+                                                            <p>{{ $product->stok }}</p>
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="selected_product[]"
-                                                                value="{{ $product->id }}"
-                                                                data-harga="{{ $product->harga }}"
-                                                                data-indeks="{{ $index }}">
-                                                        </td>
-                                                        <td>
-                                                            <div class="jumlah">
-                                                                <button type="button" class="min"><i
-                                                                        class="bi bi-dash-lg"
-                                                                        data-indeks="{{ $index }}"></i></button>
-                                                                <input type="hidden"
-                                                                    name="jumlah_beli[{{ $product->id }}]"
-                                                                    value="0" data-indeks="{{ $index }}">
-                                                                <span class="count">0</span>
-                                                                <button type="button" class="plus"
-                                                                    data-indeks="{{ $index }}"><i
-                                                                        class="bi bi-plus-lg"></i></button>
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary w-100  "
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal_{{ $index }}">
+                                                                Detail Produk
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade"
+                                                                id="exampleModal_{{ $index }}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Detail
+                                                                                Produk
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <img src="{{ asset('img/produk/' . $product->foto_produk) }}"
+                                                                                alt="" class="w-100">
+                                                                            <div class="d-flex">
+                                                                                <input type="checkbox"
+                                                                                    name="selected_product[]"
+                                                                                    value="{{ $product->id }}"
+                                                                                    data-harga="{{ $product->harga }}"
+                                                                                    data-indeks="{{ $index }}"
+                                                                                    class="form-check-input ms-3 p-2">
+                                                                                <p class="ms-2">Checklist untuk
+                                                                                    memesan produk ini
+                                                                                </p>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-10">
+
+
+                                                                                    <p>Nama Produk:
+                                                                                        {{ $product->nama_product }}
+                                                                                    </p>
+
+
+                                                                                    <p>Harga: {{ $product->harga }}
+                                                                                    </p>
+
+
+                                                                                    <p>Varian Rasa:
+                                                                                        {{ $product->rasa->varian_rasa }}
+                                                                                    </p>
+
+                                                                                    <p>Deskripsi:
+                                                                                        {{ $product->deskripsi }}
+                                                                                    </p>
+
+                                                                                    <p>Tanggal Expired:
+                                                                                        {{ $product->tanggal_expired }}
+                                                                                    </p>
+
+
+                                                                                </div>
+                                                                                <p class="text-center mt-5">Jumlah
+                                                                                </p>
+                                                                                <div class="col-md-2">
+                                                                                    <div class="jumlah">
+                                                                                        <button type="button"
+                                                                                            class="min"><i
+                                                                                                class="bi bi-dash-lg"
+                                                                                                data-indeks="{{ $index }}"></i></button>
+                                                                                        <input type="hidden"
+                                                                                            name="jumlah_beli[{{ $product->id }}]"
+                                                                                            value="0"
+                                                                                            data-indeks="{{ $index }}">
+                                                                                        <span class="count">0</span>
+                                                                                        <button type="button"
+                                                                                            class="plus"
+                                                                                            data-indeks="{{ $index }}"><i
+                                                                                                class="bi bi-plus-lg"></i></button>
+                                                                                    </div>
+                                                                                    <p class="text-muted text-center"
+                                                                                        id="stok"
+                                                                                        data-stok = "{{ $product->stok }}">
+                                                                                        Stok:
+                                                                                        {{ $product->stok }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary"
+                                                                                data-bs-dismiss="modal">Pesan</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <p class="text-muted text-center" id="stok"
-                                                                data-stok = "{{ $product->stok }}">Stok:
-                                                                {{ $product->stok }}
-                                                            </p>
                                                         </td>
                                                     </tr>
                                                 @endif
@@ -333,6 +465,9 @@
                                 class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Pesan
                             Sekarang</button>
                     </div>
+
+                    <!-- Button trigger modal -->
+
                     <!-- end col -->
                     </form>
 
@@ -368,28 +503,3 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tanggal-tanggal yang sudah dipesan (contoh data dari $usedDate)
-        const tanggalDipesan = @json($usedDate);
-
-        flatpickr("#masuk", {
-            minDate: "{{ $today }}", // Atur tanggal minimal
-            disable: tanggalDipesan, // Menonaktifkan tanggal-tanggal yang sudah dipesan
-            onChange: function(selectedDates, dateStr, instance) {
-                // Memeriksa apakah tanggal yang dipilih sudah dipesan
-                if (tanggalDipesan.includes(dateStr)) {
-                    alert("Tanggal ini sudah dipesan. Silakan pilih tanggal lain.");
-                    instance.clear(); // Membersihkan nilai input
-                }
-            },
-            // onReady: function(selectedDates, dateStr, instance) {
-            //     // Mengubah warna latar belakang tanggal yang dinonaktifkan menjadi merah
-            //     const disabledDates = instance.days.querySelectorAll('.flatpickr-disabled');
-            //     disabledDates.forEach(function(date) {
-            //         date.style.color = 'red';
-            //     });
-            // }
-        });
-    });
-</script> --}}
