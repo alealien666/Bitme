@@ -170,6 +170,10 @@ const redirectPage = () => {
     window.location.href = '../user/riwayat-pemesanan'
 }
 
+const disable = document.querySelector('.hx')
+
+disable.setAttribute('disable')
+
 
 
 

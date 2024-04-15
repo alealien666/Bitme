@@ -29,9 +29,11 @@ class riwayatPemesananController extends Controller
         foreach ($listPemesanan as $index => $value) {
 
             $product = detail_order::join('products', 'products.id', '=', 'detail_orders.product_id')
+                ->join('rasas', 'rasas.id', '=', 'products.rasa_id')
                 ->select(
                     'products.nama_product',
                     'products.harga',
+                    'rasas.varian_rasa',
                     'detail_orders.jumlah_beli'
                 )
                 ->where('detail_orders.order_id', $value->id_pemesanan)

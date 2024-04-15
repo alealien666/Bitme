@@ -86,7 +86,7 @@ class OrderController extends Controller
         $selectedProduct = Product::whereIn('id', $selectedProductIds)->get();
         // $product = Product::where('slug', $slug)->firstOrFail();
         // $categoryProduct = $product->category;
-        $product = Product::all();
+        $product = Product::with('rasa')->get();
         // $product->each(function ($product) {
         //     $product->harga = number_format($product->harga, 0, ',', '.');
         // });

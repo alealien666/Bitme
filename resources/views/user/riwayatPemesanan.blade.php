@@ -269,13 +269,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <img class="img-preview col-md-12"
                                         src="{{ asset('img/bukti-pembayaran/' . basename($list->bukti_pembayaran)) }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="col-md-12">
                                     <table>
                                         <tr>
@@ -310,13 +310,15 @@
                                                 <table class="w-100">
                                                     <tr class="text-center">
                                                         <th>Product</th>
+                                                        <th>Rasa</th>
                                                         <th>Jumlah</th>
                                                         <th>Harga</th>
                                                     </tr>
                                                     @foreach ($list['product'] as $key => $product)
                                                         <tr>
                                                             <td style="ps-5 pe-5">{{ $product->nama_product }}</td>
-                                                            <td class="text-center">{{ $product->jumlah_beli }}</td>
+                                                            <td style="ps-5 pe-5">{{ $product->varian_rasa }}</td>
+                                                            <td class="ps-5 pe-5">{{ $product->jumlah_beli }}</td>
                                                             <td class="ps-5 pe-5">
                                                                 Rp.{{ number_format($product->harga, 0, ',', '.') }}
                                                             </td>
