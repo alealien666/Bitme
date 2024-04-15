@@ -37,7 +37,7 @@ class DeleteExpired extends Command
             }
             foreach ($order->product as $product) {
                 $masterProduct = Product::find($product->id);
-                $masterProduct->update(['stok' => $masterProduct->jumlah_beli + $product->pivot->jumlah_beli]);
+                $masterProduct->update(['stok' => $masterProduct->stok + $product->pivot->jumlah_beli]);
             }
         }
     }
