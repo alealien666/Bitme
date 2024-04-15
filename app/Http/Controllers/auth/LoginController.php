@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function index()
     {
         return view('auth.login.index', [
-            'title' => 'Silab | Sign In'
+            'title' => 'Bitme | Sign In'
         ]);
     }
 

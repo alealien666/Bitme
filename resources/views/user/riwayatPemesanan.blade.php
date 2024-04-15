@@ -72,7 +72,7 @@
                     <div class="text-center mb-4">
                         <h4 class="fw-semibold fs-23">Riwayat Pemesanan</h4>
                         <p class="text-muted mb-4 fs-15">
-                            pemesanan Product Elaku
+                            pemesanan Product Bitme
                         </p>
 
                         <div class="d-inline-flex">
@@ -385,7 +385,7 @@
             const diff = now.diff(expiredAt_{{ $list->id_pemesanan }},
                 'second')
 
-            console.log(diff)
+            // console.log(diff)
             const minutes = Math.floor(diff / 60)
             const seconds = diff % 60
 

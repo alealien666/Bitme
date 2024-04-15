@@ -91,7 +91,7 @@ class OrderController extends Controller
         //     $product->harga = number_format($product->harga, 0, ',', '.');
         // });
 
-        return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Elaku | Order');
+        return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Bitme | Order');
     }
 
     public function uploadPembayaran(Request $request, $id)
