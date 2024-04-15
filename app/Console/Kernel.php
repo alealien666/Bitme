@@ -10,7 +10,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app:delete-expired')->everyfiveMinutes();
-        $schedule->command('app:refill-alat')->dailyAt('05:00:00');
     }
 
     protected function commands(): void
