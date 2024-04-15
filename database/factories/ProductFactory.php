@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lab>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class LabFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,12 @@ class LabFactory extends Factory
     public function definition(): array
     {
         return [
-            "nama_lab" => fake()->sentence(),
-            "slug" => fake()->slug(),
+            "rasa_id" => mt_rand(1, 4),
+            "nama_product" => fake()->sentence(1),
             "deskripsi" => fake()->paragraph(3, 5),
-            // "status" => 'tersedia',
-            "kapasitas" => fake()->numberBetween(15, 30),
-            "category_id" => mt_rand(1, 3)
+            "harga" => 10000,
+            "stok" => 10,
+            "tanggal_expired" => fake()->date()
         ];
     }
 }

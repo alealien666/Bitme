@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Category;
-use App\Models\Alat_Tambahan;
-use App\Models\Lab;
+use App\Models\Rasa;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,21 +34,21 @@ class DatabaseSeeder extends Seeder
         // end
 
         // category
-        Category::create([
-            'category' => 'Microbiologi',
-            'deskripsi' => 'biologi'
+        Rasa::create([
+            'varian_rasa' => 'Vanilla',
         ]);
-        Category::create([
-            'category' => 'Kimia',
-            'deskripsi' => 'kimia'
+        Rasa::create([
+            'varian_rasa' => 'Coklat',
         ]);
-        Category::create([
-            'category' => 'Fisika',
-            'deskripsi' => 'fisika'
+        Rasa::create([
+            'varian_rasa' => 'Sayur',
         ]);
+        Rasa::create([
+            'varian_rasa' => 'Buah Naga',
+        ]);
+
         // end
 
-        Alat_Tambahan::factory()->count(20)->create();
-        Lab::factory()->count(9)->create();
+        Product::factory()->count(4)->create();
     }
 }
