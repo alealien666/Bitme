@@ -13,6 +13,6 @@ class HomeController extends Controller
 
     public function profil()
     {
-        return view('user.profile', ['title' => 'Elaku | Profile']);
+        return view('user.profile', ['title' => 'Bitme | Profile']);
     }
 }

@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('user.product', compact('product'))->with('title', 'Elaku | Product');
+        return view('user.product', compact('product'))->with('title', 'Bitme | Product');
     }
 
     /**

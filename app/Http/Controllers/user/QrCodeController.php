@@ -15,7 +15,7 @@ class QrCodeController extends Controller
     public function index()
     {
         $qrCode = QrCode::with('user')->get();
-        return view('user.redeem', compact('qrCode'))->with('title', 'Elaku | Redeem');
+        return view('user.redeem', compact('qrCode'))->with('title', 'Bitme | Redeem');
     }
 
     public function store(Request $request)
@@ -43,6 +43,6 @@ class QrCodeController extends Controller
     public function show($kode)
     {
         $qrCode = QrCode::with('user')->get();
-        return view('user.redeem', compact('kode', 'qrCode'))->with('title', 'Elaku | Redeem');
+        return view('user.redeem', compact('kode', 'qrCode'))->with('title', 'Bitme | Redeem');
     }
 }

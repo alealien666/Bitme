@@ -44,7 +44,7 @@ class riwayatPemesananController extends Controller
         $jumlahPending = count($listPemesanan->where('status', 'pending'));
         $jumlahApproved = count($listPemesanan->where('status', 'approved'));
         return view('user.riwayatPemesanan', compact('listPemesanan', 'jumlahPending', 'jumlahApproved'), [
-            'title' => 'Elaku | Riwayat Pemesanan'
+            'title' => 'Bitme | Riwayat Pemesanan'
         ]);
     }
 }
