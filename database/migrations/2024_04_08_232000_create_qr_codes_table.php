@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('qr_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('code')->unique();
-            $table->string('token')->unique();
             $table->boolean('redeemed')->default(false);
             $table->enum('status', ['baru', 'di tukar']);
             $table->timestamps();

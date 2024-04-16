@@ -70,7 +70,6 @@ Route::group(['middleware' => 'preventBack'], function () {
         // user
         Route::middleware(['auth', 'role:2'])->group(function () {
             Route::get('/user', [HomeController::class, 'profil']);
-            Route::get('/orderAnalisis/{slug}', [OrderController::class, 'showOrderAnalisis']);
             Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
             Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
             Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
@@ -78,11 +77,16 @@ Route::group(['middleware' => 'preventBack'], function () {
 
             // riwayat pemesanan
             Route::get('/user/riwayat-pemesanan', [riwayatPemesananController::class, 'index'])->name('riwayat-pemesanan.index');
+
+            // redeem kode
+            Route::get('/redeem', [QrCodeController::class, 'index']);
+            Route::get('/redeem/{kode}', [QrCodeController::class, 'show'])->name('redeem.page');
+            Route::post('/postKode', [QRCodeController::class, 'redeem'])->name('redeemKode');
+
+            // tukar kode
+            Route::post('/tukarKode', [QrCodeController::class, 'tukarCodeRedeem'])->name('tukarCode');
         });
     });
 });
 
-Route::get('/redeem', [QrCodeController::class, 'index']);
 Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);
-Route::get('/redeem/{kode}', [QrCodeController::class, 'show'])->name('redeem.page');
-Route::post('/postKode', [QRCodeController::class, 'store'])->name('redeemKode');
