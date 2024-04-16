@@ -69,10 +69,6 @@ Route::group(['middleware' => 'preventBack'], function () {
                 Route::delete('/list-labs/destroy/{id}', [listLabsController::class, 'destroy'])->name('Admin.list-labs.destroy');
 
                 // analises
-                Route::get('/list-analises', [listAnalisesController::class, 'index'])->name('Admin.list-analises.index');
-                Route::post('/list-analises/add', [listAnalisesController::class, 'store'])->name('Admin.list-analises.store');
-                Route::post('/list-analises/update/{id}', [listAnalisesController::class, 'update'])->name('Admin.list-analises.update');
-                Route::delete('/list-analises/destroy/{id}', [listAnalisesController::class, 'destroy'])->name('Admin.list-analises.destroy');
                 Route::post('/riwayat-pemesanan/verifikasi/{id}', [PemesananController::class, 'verifikasi'])->name('riwayat-pemesanan.verifikasi');
 
 
@@ -88,7 +84,6 @@ Route::group(['middleware' => 'preventBack'], function () {
         // user
         Route::middleware(['auth', 'role:2'])->group(function () {
             Route::get('/user', [HomeController::class, 'profil']);
-            Route::get('/orderAnalisis/{slug}', [OrderController::class, 'showOrderAnalisis']);
             Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
             Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
             Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
@@ -96,11 +91,16 @@ Route::group(['middleware' => 'preventBack'], function () {
 
             // riwayat pemesanan
             Route::get('/user/riwayat-pemesanan', [riwayatPemesananController::class, 'index'])->name('riwayat-pemesanan.index');
+
+            // redeem kode
+            Route::get('/redeem', [QrCodeController::class, 'index']);
+            Route::get('/redeem/{kode}', [QrCodeController::class, 'show'])->name('redeem.page');
+            Route::post('/postKode', [QRCodeController::class, 'redeem'])->name('redeemKode');
+
+            // tukar kode
+            Route::post('/tukarKode', [QrCodeController::class, 'tukarCodeRedeem'])->name('tukarCode');
         });
     });
 });
 
-Route::get('/redeem', [QrCodeController::class, 'index']);
 Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);
-Route::get('/redeem/{kode}', [QrCodeController::class, 'show'])->name('redeem.page');
-Route::post('/postKode', [QRCodeController::class, 'store'])->name('redeemKode');
