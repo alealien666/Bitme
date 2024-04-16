@@ -27,9 +27,9 @@ class LoginController extends Controller
 
             $user = Auth::user();
             if ($user->role === 0) {
-                return redirect()->route('Admin.list-analises.index')->with('success', 'Berhasil Login Sebagai Super Admin');
+                return redirect()->route('Admin.list-product.index')->with('success', 'Berhasil Login Sebagai Super Admin');
             } elseif ($user->role === 1) {
-                return redirect()->route('Admin.list-analises.index')->with('success', 'Berhasil Login');
+                return redirect()->route('Admin.list-product.index')->with('success', 'Berhasil Login');
             } else if ($user->role === 2) {
                 return redirect('/user')->with('success', 'Berhasil Login');
             }

@@ -1,6 +1,6 @@
-@extends('auth.admin.layout.app')
-@section('title', 'List Alat')
-@section('menu', 'List Alat')
+@extends('admin.layout.app')
+@section('title', 'List Product')
+@section('menu', 'List Product')
 @section('submenu', 'Admin')
 
 <style>
@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">List Alat Praktik</h4>
+                    <h4 class="card-title mb-0">List Product Bitme</h4>
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div id="customerList">
@@ -24,7 +24,7 @@
                                 <div>
                                     <button type="button" class="btn btn-warning add-btn" data-bs-toggle="modal"
                                         id="create-btn" data-bs-target="#addModal"><i
-                                            class="ri-add-line align-bottom me-1"></i> Tambah Alat</button>
+                                            class="ri-add-line align-bottom me-1"></i> Tambah Product</button>
                                 </div>
                             </div>
                         </div>
@@ -33,35 +33,33 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" data-sort="no">No</th>
-                                        <th class="text-center" data-sort="kategori">Kategori</th>
-                                        <th class="text-center" data-sort="jenis_alat">Jenis Alat</th>
+                                        <th class="text-center" data-sort="kategori">Varian Rasa</th>
+                                        <th class="text-center" data-sort="jenis_alat">Nama Product</th>
                                         <th class="text-center" data-sort="foto">foto</th>
                                         <th class="text-center" data-sort="harga">Harga</th>
-                                        <th class="text-center" data-sort="jumlah">Jumlah</th>
+                                        <th class="text-center" data-sort="jumlah">Stock</th>
                                         <th class="text-center" data-sort="action">action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($listAlat as $index => $list)
+                                    @foreach ($listProduct as $index => $product)
                                         <tr>
                                             <th class="text-center">{{ $index + 1 }}</th>
-                                            <td class="text-center">{{ $list->category }}</td>
-                                            <td class="text-center">{{ $list->jenis_alat }}</td>
-                                            <td style="width: 150px;" class="text-center">
-                                                <img width="200px" height="120px"
-                                                    src="{{ asset('storage/foto-alat/' . basename($list->foto)) }}"
+                                            <td class="text-center">{{ $product->rasa->varian_rasa }}</td>
+                                            <td class="text-center">{{ $product->nama_product }}</td>
+                                            <td class="text-center">
+                                                <img src="{{ asset('img/produk/' . basename($product->foto_produk)) }}"
                                                     alt="">
                                             </td>
-                                            <td class="text-center">{{ $list->harga }}</td>
-                                            <td class="text-center">{{ $list->jumlah }}</td>
-                                            <td class="text-center d-flex">
+                                            <td class="text-center">{{ $product->harga }}</td>
+                                            <td class="text-center">{{ $product->stok }}</td>
+                                            <td class="text-center d-flex align-items-center">
                                                 <button class="btn btn-md p-2 btn-success edit-item-btn me-2"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editJenis{{ $list->id_alat }}"><i
+                                                    data-bs-toggle="modal" data-bs-target="#editJenis{{ $product->id }}"><i
                                                         class="bi bi-pencil-fill"></i></button>
                                                 <button class="btn btn-md p-2 btn-danger remove-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#deleteJenis{{ $list->id_alat }}"><i
+                                                    data-bs-target="#deleteJenis{{ $product->id }}"><i
                                                         class="bi bi-trash-fill"></i></button>
                                             </td>
                                         </tr>
@@ -84,26 +82,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form method="POST" action="{{ route('Admin.list-alat.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('Admin.list-product.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="kategori">Pilih Kategori</label>
                             <select class="form-select" id="kategori" name="kategori">
                                 <option selected>Pilih Kategori</option>
-                                @foreach ($listKategori as $data)
-                                    <option value="{{ $data->id }}">{{ $data->category }}</option>
+                                @foreach ($listProduct as $product)
+                                    <option value="{{ $product->rasa->id_rasa }}">{{ $product->rasa->varian_rasa }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="jenis_alat" class="form-label">Masukkan Jenis Alat</label>
-                            <input type="text" name="jenis_alat" id="jenis_alat" class="form-control" required
+                            <label for="nama_product" class="form-label">Masukkan Nama Product</label>
+                            <input type="text" name="nama_product" id="nama_product" class="form-control" required
                                 autocomplete="off" />
                         </div>
                         <div class="mb-3">
-                            <label for="jumlah" class="form-label">Masukkan Jumlah</label>
-                            <input type="number" name="jumlah" id="jumlah" class="form-control" required
+                            <label for="stok" class="form-label">Masukkan Stok</label>
+                            <input type="number" name="stok" id="stok" class="form-control" required
                                 autocomplete="off" />
                         </div>
                         <div class="mb-3">
@@ -129,9 +128,9 @@
         </div>
     </div>
 
-    @foreach ($listAlat as $list)
+    @foreach ($listProduct as $product)
         {{-- update modal --}}
-        <div class="modal fade" id="editJenis{{ $list->id_alat }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="editJenis{{ $product->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -140,7 +139,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form method="POST" action="{{ route('Admin.list-alat.update', $list->id_alat) }}"
+                    <form method="POST" action="{{ route('Admin.list-product.update', $product->id) }}"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
@@ -148,41 +147,42 @@
                                 <label for="kategori">Pilih Kategori</label>
                                 <select class="form-select" id="kategori" name="kategori">
                                     <option selected>Pilih Kategori</option>
-                                    @foreach ($listKategori as $data)
-                                        <option value="{{ $data->id }}"
-                                            @if ($data->category === $list->category) selected @endif>
-                                            {{ $data->category }}
+                                    @foreach ($listProduct as $data)
+                                        <option value="{{ $data->rasa->id }}"
+                                            @if ($data->rasa->varian_rasa === $product->rasa->varian_rasa) selected @endif>
+                                            {{ $data->rasa->varian_rasa }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="jenis_alat" class="form-label">Masukkan Jenis Alat</label>
-                                <input type="text" value="{{ $list->jenis_alat }}" name="jenis_alat" id="jenis_alat"
-                                    class="form-control" required autocomplete="off" />
+                                <input type="text" value="{{ $product->nama_product }}" name="jenis_alat"
+                                    id="jenis_alat" class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
                                 <label for="jumlah" class="form-label">Masukkan Jumlah</label>
-                                <input type="number" value="{{ $list->jumlah }}" name="jumlah" id="jumlah"
+                                <input type="number" value="{{ $product->stok }}" name="jumlah" id="jumlah"
                                     class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
                                 <label for="harga" class="form-label">Masukkan Harga</label>
-                                <input type="number" value="{{ $list->harga }}" name="harga" id="harga"
+                                <input type="number" value="{{ $product->harga }}" name="harga" id="harga"
                                     class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Masukkan Foto</label>
-                                <input type="hidden" name="oldImage" value={{ $list->foto }}>
-                                @if ($list->foto)
+                                <input type="hidden" name="oldImage" value={{ $product->foto_produk }}>
+                                @if ($product->foto_produk)
                                     <img class="img-preview img-fluid mb-3 col-sm-5 d-block"
-                                        src="{{ asset('storage/foto-alat/' . basename($list->foto)) }}"
+                                        src="{{ asset('img/produk/' . basename($product->foto_produk)) }}"
                                         alt="Preview Image">
                                 @else
                                     <img class="img-preview img-fluid mb-3 col-md-6">
                                 @endif
                                 <input type="file" onchange="previewImage()" name="foto" id="foto"
-                                    class="form-control" autocomplete="off" value="{{ old(basename($list->foto)) }}" />
+                                    class="form-control" autocomplete="off"
+                                    value="{{ old(basename($product->foto_produk)) }}" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -197,7 +197,7 @@
         </div>
 
         {{-- delete modal --}}
-        <div class="modal fade zoomIn" id="deleteJenis{{ $list->id_alat }}" tabindex="-1" aria-hidden="true">
+        <div class="modal fade zoomIn" id="deleteJenis{{ $product->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -215,12 +215,12 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('Admin.list-alat.destroy', $list->id_alat) }}" method="POST"
+                            <form action="{{ route('Admin.list-product.destroy', $product->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn w-sm btn-danger "
-                                    id="delete-record{{ $list->id_alat }}">Ya, Hapus!</button>
+                                    id="delete-record{{ $product->id }}">Ya, Hapus!</button>
                             </form>
                         </div>
                     </div>

@@ -4,21 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Alat_Tambahan;
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 
-class listAlatController extends Controller
+class listProductController extends Controller
 {
+
     public function index()
     {
-        $listAlat = Alat_Tambahan::join('categories', 'categories.id', '=', 'alat_tambahans.category_id')
-            ->select('alat_tambahans.id as id_alat', 'categories.category', 'jenis_alat', 'harga', 'jumlah', 'foto')
-            ->get();
-
-        $listKategori = Category::all();
-        return view('auth.admin.tampilan.listAlat', compact('listAlat', 'listKategori'));
+        $listProduct = Product::with('rasa')->get();
+        return view('admin.tampilan.listProduct', compact('listProduct',));
     }
 
     // add data alat
@@ -38,7 +34,7 @@ class listAlatController extends Controller
 
         if ($request->file('foto')) {
             $namaBerkas = $request->file('foto')->store('public/foto-alat');
-            $Alat = new Alat_Tambahan();
+            $Alat = new Product();
             $Alat->category_id = $request->input('kategori');
             $Alat->jenis_alat = $request->input('jenis_alat');
             $Alat->jumlah = $request->input('jumlah');
@@ -60,7 +56,7 @@ class listAlatController extends Controller
             'foto' => 'image|file|max:2000'
         ]);
 
-        $Alat = Alat_Tambahan::findOrFail($id);
+        $Alat = Product::findOrFail($id);
 
         if ($request->file('foto') == "") {
             $Alat->category_id = $request->kategori;
@@ -84,7 +80,7 @@ class listAlatController extends Controller
     // delete data alat
     public function destroy($id)
     {
-        $Alat = Alat_Tambahan::findOrFail($id);
+        $Alat = Product::findOrFail($id);
         // Storage::delete($Alat->photo);
         File::delete("storage/foto-alat/" . basename($Alat->foto));
         $Alat->delete();

@@ -36,7 +36,7 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('list-alat') || Request::is('list-analises') || Request::is('list-labs') ? 'active' : '' }} menu-link"
+                        <a class="nav-link {{ Request::is('list-product') || Request::is('list-analises') || Request::is('list-labs') ? 'active' : '' }} menu-link"
                             href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false"
                             aria-controls="sidebarApps">
                             <i class="ri-apps-2-line"></i>
@@ -45,22 +45,10 @@
                         <div class="collapse menu-dropdown" id="sidebarApps">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('Admin.list-alat.index') }}"
+                                    <a href="{{ route('Admin.list-product.index') }}"
                                         class="nav-link {{ Request::is('list-alat') ? 'active' : '' }}">
                                         <i class="ri-apps-2-line"></i>
-                                        List Alat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.list-analises.index') }}"
-                                        class="nav-link {{ Request::is('list-analises') ? 'active' : '' }}">
-                                        <i class="ri-apps-2-line"></i>
-                                        List Analize</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.list-labs.index') }}"
-                                        class="nav-link {{ Request::is('list-labs') ? 'active' : '' }}">
-                                        <i class="ri-apps-2-line"></i>
-                                        List Labs</a>
+                                        List Product</a>
                                 </li>
                             </ul>
                         </div>

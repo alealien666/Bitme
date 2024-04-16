@@ -4,15 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\QrCodeController;
 use App\Http\Controllers\GenerateQRController;
-use App\Http\Controllers\user\LabController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\listProductController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\Admin\listAlatController;
-use App\Http\Controllers\Admin\listLabsController;
 use App\Http\Controllers\Admin\PemesananController;
-use App\Http\Controllers\Admin\listAnalisesController;
 use App\Http\Controllers\user\riwayatPemesananController;
 
 /*
@@ -56,26 +53,11 @@ Route::group(['middleware' => 'preventBack'], function () {
                 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('Admin.user.destroy');
             });
             Route::middleware(['auth', 'role:0 , 1'])->group(function () {
-                // list alat
-                Route::get('/list-alat', [listAlatController::class, 'index'])->name('Admin.list-alat.index');
-                Route::post('/list-alat/add', [listAlatController::class, 'store'])->name('Admin.list-alat.store');
-                Route::post('/list-alat/update/{id}', [listAlatController::class, 'update'])->name('Admin.list-alat.update');
-                Route::delete('/list-alat/destroy/{id}', [listAlatController::class, 'destroy'])->name('Admin.list-alat.destroy');
-
-                // list labs
-                Route::get('/list-labs', [listLabsController::class, 'index'])->name('Admin.list-labs.index');
-                Route::post('/list-labs/add', [listLabsController::class, 'store'])->name('Admin.list-labs.store');
-                Route::post('/list-labs/update/{id}', [listLabsController::class, 'update'])->name('Admin.list-labs.update');
-                Route::delete('/list-labs/destroy/{id}', [listLabsController::class, 'destroy'])->name('Admin.list-labs.destroy');
-
-                // analises
-                Route::get('/list-analises', [listAnalisesController::class, 'index'])->name('Admin.list-analises.index');
-                Route::post('/list-analises/add', [listAnalisesController::class, 'store'])->name('Admin.list-analises.store');
-                Route::post('/list-analises/update/{id}', [listAnalisesController::class, 'update'])->name('Admin.list-analises.update');
-                Route::delete('/list-analises/destroy/{id}', [listAnalisesController::class, 'destroy'])->name('Admin.list-analises.destroy');
-                Route::post('/riwayat-pemesanan/verifikasi/{id}', [PemesananController::class, 'verifikasi'])->name('riwayat-pemesanan.verifikasi');
-
-
+                // list product
+                Route::get('/list-product', [listProductController::class, 'index'])->name('Admin.list-product.index');
+                Route::post('/list-product/add', [listProductController::class, 'store'])->name('Admin.list-product.store');
+                Route::post('/list-product/update/{id}', [listProductController::class, 'update'])->name('Admin.list-product.update');
+                Route::delete('/list-product/destroy/{id}', [listProductController::class, 'destroy'])->name('Admin.list-product.destroy');
                 // pemesanan
                 Route::get('/list-pemesanan', [PemesananController::class, 'index'])->name('Admin.list-pemesanan.index');
                 Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
