@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('code')->unique();
-            $table->string('token')->unique();
             $table->boolean('redeemed')->default(false);
             $table->enum('status', ['baru', 'di tukar']);
             $table->timestamps();

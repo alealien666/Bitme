@@ -7,7 +7,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('company', [
-            'title' => 'Elaku | Home'
+            'title' => 'Bitme | Home'
         ]);
     }
 
