@@ -46,10 +46,10 @@
     <div id="layout-wrapper">
 
         <header id="page-topbar">
-            @include('auth.admin.layout.navbar')
+            @include('admin.layout.navbar')
         </header>
         <!-- ========== App Menu ========== -->
-        @include('auth.admin.layout.sidebar')
+        @include('admin.layout.sidebar')
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
@@ -95,7 +95,7 @@
             </div>
             <!-- End Page-content -->
 
-            @include('auth.admin.layout.footer')
+            @include('admin.layout.footer')
         </div>
         <!-- end main content-->
 
