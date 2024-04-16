@@ -35,7 +35,7 @@
                                         <th class="text-center" data-sort="no">No</th>
                                         <th class="text-center" data-sort="kategori">Varian Rasa</th>
                                         <th class="text-center" data-sort="jenis_alat">Nama Product</th>
-                                        <th class="text-center" data-sort="foto">foto</th>
+                                        <th class="text-center" data-sort="foto">Tanggal Expired</th>
                                         <th class="text-center" data-sort="harga">Harga</th>
                                         <th class="text-center" data-sort="jumlah">Stock</th>
                                         <th class="text-center" data-sort="action">action</th>
@@ -47,13 +47,10 @@
                                             <th class="text-center">{{ $index + 1 }}</th>
                                             <td class="text-center">{{ $product->rasa->varian_rasa }}</td>
                                             <td class="text-center">{{ $product->nama_product }}</td>
-                                            <td class="text-center">
-                                                <img src="{{ asset('img/produk/' . basename($product->foto_produk)) }}"
-                                                    alt="">
-                                            </td>
-                                            <td class="text-center">{{ $product->harga }}</td>
+                                            <td class="text-center">{{ $product->tanggal_expired }}</td>
+                                            <td class="text-center">Rp. {{ $product->harga }}</td>
                                             <td class="text-center">{{ $product->stok }}</td>
-                                            <td class="text-center d-flex align-items-center">
+                                            <td class="text-center">
                                                 <button class="btn btn-md p-2 btn-success edit-item-btn me-2"
                                                     data-bs-toggle="modal" data-bs-target="#editJenis{{ $product->id }}"><i
                                                         class="bi bi-pencil-fill"></i></button>
@@ -78,7 +75,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-light p-3">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Alat</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah List Produk Bitme</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
@@ -86,11 +83,11 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="kategori">Pilih Kategori</label>
-                            <select class="form-select" id="kategori" name="kategori">
-                                <option selected>Pilih Kategori</option>
-                                @foreach ($listProduct as $product)
-                                    <option value="{{ $product->rasa->id_rasa }}">{{ $product->rasa->varian_rasa }}
+                            <label for="rasa">Pilih Varian Rasa</label>
+                            <select class="form-select" id="rasa" name="rasa">
+                                <option selected>Pilih Varian Rasa</option>
+                                @foreach ($rasas as $rasa)
+                                    <option value="{{ $rasa->id }}">{{ $rasa->varian_rasa }}
                                     </option>
                                 @endforeach
                             </select>
@@ -101,6 +98,14 @@
                                 autocomplete="off" />
                         </div>
                         <div class="mb-3">
+                            <label for="tanggal" class="form-label">Tanggal Expired</label>
+                            @php
+                                $today = now()->format('Y-m-d');
+                            @endphp
+                            <input type="date" name="tanggal" id="tanggal" class="form-control"
+                                min="{{ $today }}" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="stok" class="form-label">Masukkan Stok</label>
                             <input type="number" name="stok" id="stok" class="form-control" required
                                 autocomplete="off" />
@@ -109,6 +114,11 @@
                             <label for="harga" class="form-label">Masukkan Harga</label>
                             <input type="number" name="harga" id="harga" class="form-control" required
                                 autocomplete="off" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Masukkan Deskripsi Produk</label>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10" required>
+                            </textarea>
                         </div>
                         <div class="mb-3">
                             <label for="foto" class="form-label">Masukkan Foto</label>
@@ -135,7 +145,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-light p-3">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Jenis Alat</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit List Produk Bitme</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
@@ -144,25 +154,33 @@
                         @csrf
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="kategori">Pilih Kategori</label>
-                                <select class="form-select" id="kategori" name="kategori">
-                                    <option selected>Pilih Kategori</option>
-                                    @foreach ($listProduct as $data)
-                                        <option value="{{ $data->rasa->id }}"
-                                            @if ($data->rasa->varian_rasa === $product->rasa->varian_rasa) selected @endif>
-                                            {{ $data->rasa->varian_rasa }}
+                                <label for="rasa">Pilih Varian Rasa</label>
+                                <select class="form-select" id="rasa" name="rasa">
+                                    <option selected>Pilih Varian Rasa</option>
+                                    @foreach ($rasas as $rasa)
+                                        <option value="{{ $rasa->id }}"
+                                            @if ($rasa->varian_rasa === $product->rasa->varian_rasa) selected @endif>
+                                            {{ $rasa->varian_rasa }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="jenis_alat" class="form-label">Masukkan Jenis Alat</label>
-                                <input type="text" value="{{ $product->nama_product }}" name="jenis_alat"
-                                    id="jenis_alat" class="form-control" required autocomplete="off" />
+                                <label for="nama_product" class="form-label">Masukkan Nama Product</label>
+                                <input type="text" value="{{ $product->nama_product }}" name="nama_product"
+                                    id="nama_product" class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
-                                <label for="jumlah" class="form-label">Masukkan Jumlah</label>
-                                <input type="number" value="{{ $product->stok }}" name="jumlah" id="jumlah"
+                                <label for="tanggal" class="form-label">Masukkan Tanggal Expired</label>
+                                @php
+                                    $today = now()->format('Y-m-d');
+                                @endphp
+                                <input type="date" name="tanggal" class="form-control" id="tanggal"
+                                    min="{{ $today }}" value="{{ $product->tanggal_expired }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="stok" class="form-label">Masukkan Stok</label>
+                                <input type="number" value="{{ $product->stok }}" name="stok" id="stok"
                                     class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
@@ -171,12 +189,17 @@
                                     class="form-control" required autocomplete="off" />
                             </div>
                             <div class="mb-3">
+                                <label for="deskripsi" class="form-label">Masukkan Deskripsi Produk</label>
+                                <textarea class="form-control" name="deskripsi" id="deskripsi"cols="30" rows="10" required>
+                                    {{ $product->deskripsi }}
+                                </textarea>
+                            </div>
+                            <div class="mb-3">
                                 <label for="foto" class="form-label">Masukkan Foto</label>
                                 <input type="hidden" name="oldImage" value={{ $product->foto_produk }}>
                                 @if ($product->foto_produk)
-                                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block"
-                                        src="{{ asset('img/produk/' . basename($product->foto_produk)) }}"
-                                        alt="Preview Image">
+                                    <img class="img-preview img-fluid mb-3 d-block"
+                                        src="{{ asset('img/produk/' . basename($product->foto_produk)) }}">
                                 @else
                                     <img class="img-preview img-fluid mb-3 col-md-6">
                                 @endif
