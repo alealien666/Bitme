@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use App\Models\QrCode as QRCodeModel;
 
 class GenerateQrController extends Controller
 {
@@ -17,7 +17,7 @@ class GenerateQrController extends Controller
         Storage::disk('public')->put($filename, $qrCode);
 
         // Simpan informasi QR code ke dalam database
-        QRCode::create([
+        QRCodeModel::create([
             'code' => $nomorRandom,
             'redeemed' => false,
             'status' => 'baru',
