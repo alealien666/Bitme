@@ -347,10 +347,44 @@
                                 <button type="submit" name="submit" class="btn btn-success">unggah bukti
                                     Pembayaran</button>
                             </form>
+                            <button class="btn btn-danger" type="submit" name="batal" data-bs-toggle="modal"
+                                data-bs-target="#batal{{ $list->id_pemesanan }}">Batalkan Pesanan</button>
                         </div>
                     @endif
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
+                </div>
+            </div>
+        </div>
+
+        {{-- modal delete --}}
+        <div class="modal fade zoomIn" id="batal{{ $list->id_pemesanan }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="btn-close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mt-2 text-center">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                                <h4>Anda Yakin ?</h4>
+                                <p class="text-muted mx-4 mb-0">Anda Yakin Ingin Membatalkan Pesanan Ini ?</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Batal</button>
+                            <form action="{{ route('batalkan-pesanan', $list->id_pemesanan) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn w-sm btn-danger "
+                                    id="delete-record{{ $list->id_pemesanan }}">Batalkan Pesanan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     @endforeach
     <footer class="footer">

@@ -73,10 +73,11 @@ Route::group(['middleware' => 'preventBack'], function () {
             Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
             Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
             Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
-            Route::post('/riwayat-pemesanan/upload/{id}', [OrderController::class, 'uploadPembayaran'])->name('upload-pembayaran');
 
             // riwayat pemesanan
             Route::get('/user/riwayat-pemesanan', [riwayatPemesananController::class, 'index'])->name('riwayat-pemesanan.index');
+            Route::post('/riwayat-pemesanan/upload/{id}', [OrderController::class, 'uploadPembayaran'])->name('upload-pembayaran');
+            Route::delete('batal/{id}', [riwayatPemesananController::class, 'batal'])->name('batalkan-pesanan');
 
             // redeem kode
             Route::get('/redeem', [QrCodeController::class, 'index']);

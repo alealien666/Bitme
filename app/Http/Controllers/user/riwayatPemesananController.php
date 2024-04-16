@@ -5,7 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\detail_order;
 use App\Models\Order;
-use App\Models\Lab;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class riwayatPemesananController extends Controller
@@ -46,5 +46,31 @@ class riwayatPemesananController extends Controller
         return view('user.riwayatPemesanan', compact('listPemesanan', 'jumlahPending', 'jumlahApproved'), [
             'title' => 'Bitme | Riwayat Pemesanan'
         ]);
+    }
+
+    public function batal($id)
+    {
+        // Ambil order yang akan dibatalkan
+        $order = DB::table('orders')->where('id', $id)->first();
+
+        // Jika order ditemukan
+        if ($order) {
+            // Ambil detail order terkait dengan order yang akan dibatalkan
+            $detailOrders = DB::table('detail_orders')->where('order_id', $id)->get();
+
+            // Jika ada detail order terkait
+            if ($detailOrders->isNotEmpty()) {
+                // Lakukan iterasi pada setiap detail order
+                foreach ($detailOrders as $detailOrder) {
+                    // Perbarui stok produk terkait
+                    DB::table('products')
+                        ->where('id', $detailOrder->product_id)
+                        ->increment('stok', $detailOrder->jumlah_beli);
+                }
+            }
+            DB::table('orders')->where('id', $id)->delete();
+
+            return redirect()->back()->with('success', 'Pesanan Anda telah dibatalkan dan otomatis akan terhapus dari riwayat pesanan');
+        }
     }
 }

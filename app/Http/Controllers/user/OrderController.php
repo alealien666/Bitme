@@ -65,6 +65,10 @@ class OrderController extends Controller
                 $totalBiaya = $harga * $jumlahBeli;
                 $totalCost += $totalBiaya;
 
+                if ($totalCost >= 30000) {
+                    $totalCost -= 10000;
+                }
+
                 $product->update(['stok' => $product->stok - $jumlahBeli]);
                 $jumlahBeliArray[$selectedProductId] = $jumlahBeli;
             }
@@ -84,12 +88,7 @@ class OrderController extends Controller
     {
         $selectedProductIds = session('personal_info.selected_product', []);
         $selectedProduct = Product::whereIn('id', $selectedProductIds)->get();
-        // $product = Product::where('slug', $slug)->firstOrFail();
-        // $categoryProduct = $product->category;
         $product = Product::with('rasa')->get();
-        // $product->each(function ($product) {
-        //     $product->harga = number_format($product->harga, 0, ',', '.');
-        // });
 
         return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Bitme | Order');
     }
