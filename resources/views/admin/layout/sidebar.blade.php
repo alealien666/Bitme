@@ -36,7 +36,7 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('list-product') || Request::is('list-analises') || Request::is('list-labs') ? 'active' : '' }} menu-link"
+                        <a class="nav-link {{ Request::is('list-product') || Request::is('list-rasa') ? 'active' : '' }} menu-link"
                             href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false"
                             aria-controls="sidebarApps">
                             <i class="ri-apps-2-line"></i>
@@ -46,9 +46,15 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ route('Admin.list-product.index') }}"
-                                        class="nav-link {{ Request::is('list-alat') ? 'active' : '' }}">
+                                        class="nav-link {{ Request::is('list-product') ? 'active' : '' }}">
                                         <i class="ri-apps-2-line"></i>
                                         List Product</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.list-rasa') }}"
+                                        class="nav-link {{ Request::is('list-rasa') ? 'active' : '' }}">
+                                        <i class="ri-apps-2-line"></i>
+                                        List Rasa</a>
                                 </li>
                             </ul>
                         </div>

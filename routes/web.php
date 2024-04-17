@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\QrCodeController;
 use App\Http\Controllers\GenerateQRController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RasaController;
 use App\Http\Controllers\Admin\listProductController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\user\OrderController;
@@ -58,6 +59,13 @@ Route::group(['middleware' => 'preventBack'], function () {
                 Route::post('/list-product/add', [listProductController::class, 'store'])->name('Admin.list-product.store');
                 Route::post('/list-product/update/{id}', [listProductController::class, 'update'])->name('Admin.list-product.update');
                 Route::delete('/list-product/destroy/{id}', [listProductController::class, 'destroy'])->name('Admin.list-product.destroy');
+
+                // list Rasa
+                Route::get('/list-rasa', [RasaController::class, 'index'])->name('Admin.list-rasa');
+                Route::post('/list-rasa/add', [RasaController::class, 'store'])->name('Admin.list-rasa.store');
+                Route::post('/list-rasa/update/{id}', [RasaController::class, 'update'])->name('Admin.list-rasa.update');
+                Route::delete('/list-rasa/delete/{id}', [RasaController::class, 'destroy'])->name('Admin.list-rasa.destroy');
+
                 // pemesanan
                 Route::get('/list-pemesanan', [PemesananController::class, 'index'])->name('Admin.list-pemesanan.index');
                 Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
