@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
     const subtotalElement = document.getElementById('subtotal')
     const totalElement = document.getElementById('total')
+    const diskonElement = document.getElementById('diskon')
     const disableButtonStok = document.querySelectorAll('#dis,#diss,.not')
     const productCounters = document.querySelectorAll('.jumlah')
     const plusButtons = document.querySelectorAll('.plus')
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     function updateSubtotal() {
-        var subtotal = 0
+        let subtotal = 0
         checkboxes.forEach(function (checkbox, index) {
             if (checkbox.checked) {
                 const harga = parseFloat(checkbox.getAttribute('data-harga'))
@@ -47,9 +48,24 @@ document.addEventListener("DOMContentLoaded", function () {
         updateTotal(subtotal)
     }
 
+    let diskon = 0;
+    let totalSebelumDiskon = 0;
+
     function updateTotal(subtotal) {
-        const total = subtotal
+        // totalSebelumDiskon = 0
+        let total = subtotal
+
+        if (total >= 30000) {
+            diskon = 10000
+            totalSebelumDiskon = total
+            total -= diskon
+        } else {
+            diskon = 0
+            totalSebelumDiskon = total
+        }
+
         totalElement.textContent = 'Rp. ' + total.toLocaleString('id-ID')
+        diskonElement.textContent = '- Rp. ' + diskon.toLocaleString('id-ID')
     }
 
     function incrementCount(index) {
@@ -60,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const inputJumlah = productCounters[index].querySelector('input[type="hidden"]')
         inputJumlah.value = count
-        // console.log(inputJumlah)
         updateSubtotal()
 
     }
@@ -171,7 +186,6 @@ const redirectPage = () => {
 }
 
 const disable = document.querySelector('.hx')
-
 disable.setAttribute('disable')
 
 

@@ -161,8 +161,13 @@
                                                             <div class="form-check card-radio">
                                                                 <label class="form-check-label"
                                                                     for="shippingMethod02">
+                                                                    <span class="text-wrap text-end">
+                                                                        Diskon: @if (session('total_biaya') >= 30000)
+                                                                            -10000
+                                                                        @endif
+                                                                    </span>
                                                                     <span
-                                                                        class="fs-21 float-end mt-2 text-wrap d-block fw-semibold">Rp:
+                                                                        class="fs-21 mt-2 text-wrap d-block fw-semibold">Rp:
                                                                         {{ number_format(session('total_biaya'), 0, ',', '.') }}
                                                                     </span>
                                                                     <span
@@ -371,30 +376,20 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-md-10">
-
-
                                                                                     <p>Nama Produk:
                                                                                         {{ $product->nama_product }}
                                                                                     </p>
-
-
                                                                                     <p>Harga: {{ $product->harga }}
                                                                                     </p>
-
-
                                                                                     <p>Varian Rasa:
                                                                                         {{ $product->rasa->varian_rasa }}
                                                                                     </p>
-
                                                                                     <p>Deskripsi:
                                                                                         {{ $product->deskripsi }}
                                                                                     </p>
-
                                                                                     <p>Tanggal Expired:
                                                                                         {{ $product->tanggal_expired }}
                                                                                     </p>
-
-
                                                                                 </div>
                                                                                 <p class="text-center mt-5">Jumlah
                                                                                 </p>
@@ -426,7 +421,7 @@
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                 class="btn btn-primary"
-                                                                                data-bs-dismiss="modal">Pesan</button>
+                                                                                data-bs-dismiss="modal">Pilih</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -444,6 +439,10 @@
                                             <tr>
                                                 <td class="fw-semibold" colspan="2">Sub Total :</td>
                                                 <td class="fw-semibold text-end" id="subtotal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold" colspan="2">Diskon :</td>
+                                                <td class="fw-semibold text-end text-danger" id="diskon"> </td>
                                             </tr>
                                             <tr class="table-active">
                                                 <th colspan="2">Total (Rp) :</th>
