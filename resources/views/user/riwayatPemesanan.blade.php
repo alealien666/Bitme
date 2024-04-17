@@ -333,6 +333,14 @@
                                     total pembayaran : &nbsp;&nbsp;&nbsp; <b>Rp.
                                         {{ number_format($list->total_biaya, 0, ',', '.') }}</b>
                                 </div>
+
+                                @if ($list->status === 'approved')
+                                    <a href="https://cekresi.com/"
+                                        class="text-primary border-bottom-1 border-primary">Klik Disini
+                                        untuk
+                                        cek resi
+                                        anda</a>
+                                @endif
                             </div>
                         </div>
                     </div>
