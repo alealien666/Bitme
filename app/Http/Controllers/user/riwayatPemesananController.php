@@ -50,19 +50,12 @@ class riwayatPemesananController extends Controller
 
     public function batal($id)
     {
-        // Ambil order yang akan dibatalkan
         $order = DB::table('orders')->where('id', $id)->first();
-
-        // Jika order ditemukan
         if ($order) {
-            // Ambil detail order terkait dengan order yang akan dibatalkan
             $detailOrders = DB::table('detail_orders')->where('order_id', $id)->get();
 
-            // Jika ada detail order terkait
             if ($detailOrders->isNotEmpty()) {
-                // Lakukan iterasi pada setiap detail order
                 foreach ($detailOrders as $detailOrder) {
-                    // Perbarui stok produk terkait
                     DB::table('products')
                         ->where('id', $detailOrder->product_id)
                         ->increment('stok', $detailOrder->jumlah_beli);
