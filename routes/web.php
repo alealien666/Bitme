@@ -68,10 +68,10 @@ Route::group(['middleware' => 'preventBack'], function () {
 
                 // pemesanan
                 Route::get('/list-pemesanan', [PemesananController::class, 'index'])->name('Admin.list-pemesanan.index');
-                Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
+                Route::post('/riwayat-pemesanan/verifikasi/{id}', [PemesananController::class, 'verifikasi'])->name('riwayat-pemesanan.verifikasi');
 
-                // entry hasil
-                Route::post('/entriData/{id}', [PemesananController::class, 'entryDataHasilAnalisis'])->name('hasilAnalisis');
+                // logout
+                Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
             });
         });
 

@@ -163,7 +163,7 @@
                                                                     for="shippingMethod02">
                                                                     <span class="text-wrap text-end">
                                                                         Diskon: @if (session('total_biaya') >= 30000)
-                                                                            -10000
+                                                                            - Rp 10.000
                                                                         @endif
                                                                     </span>
                                                                     <span
