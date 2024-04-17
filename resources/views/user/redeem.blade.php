@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('user.layouts.nav')
 @section('konten')
     {{-- @if (session('success'))
         <div class="alert alert-success">
@@ -50,7 +50,7 @@
             </form>
         </div>
     </div>
-
+    @include('user.layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var successMessage = '{{ session('success') }}';

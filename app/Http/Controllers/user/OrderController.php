@@ -88,7 +88,7 @@ class OrderController extends Controller
     {
         $selectedProductIds = session('personal_info.selected_product', []);
         $selectedProduct = Product::whereIn('id', $selectedProductIds)->get();
-        $product = Product::with('rasa')->get();
+        $product = Product::with('rasa', 'user')->get();
 
         return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Bitme | Order');
     }

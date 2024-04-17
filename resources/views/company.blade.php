@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('user.layouts.nav')
 @section('search')
     <form class="app-search d-none d-md-block" method="get">
         @csrf
