@@ -186,7 +186,17 @@ const redirectPage = () => {
 }
 
 const disable = document.querySelector('.hx')
-disable.setAttribute('disable')
+const nama = document.querySelector('#nama-user')
+const no = document.querySelector('#no-telp')
+const imel = document.querySelector('#email')
+const alamat = document.querySelector('#alamat')
+
+nama.setAttribute('disabled', 'true')
+imel.setAttribute('disabled', 'true')
+no.setAttribute('disabled', 'true')
+alamat.setAttribute('disabled', 'true')
+disable.setAttribute('disabled', 'true')
+
 
 
 

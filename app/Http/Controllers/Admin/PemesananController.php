@@ -18,13 +18,12 @@ class PemesananController extends Controller
             'orders.id as id_pemesanan',
             'orders.status',
             'orders.total_biaya',
-            'orders.alamat',
-            'orders.nama_pemesan',
-            'orders.no_telp',
             'orders.bukti_pembayaran',
             'orders.expired_at',
             'users.name as nama',
-            'users.email'
+            'users.email',
+            'users.alamat',
+            'users.no_telp'
         )->join('users', 'orders.user_id', '=', 'users.id')->get();
         foreach ($listPemesanan as $index => $value) {
             $product = detail_order::join('products', 'products.id', '=', 'detail_orders.product_id')

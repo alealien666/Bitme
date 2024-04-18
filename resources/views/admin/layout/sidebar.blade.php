@@ -36,7 +36,7 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('list-product') || Request::is('list-rasa') ? 'active' : '' }} menu-link"
+                        <a class="nav-link {{ Request::is('list-product') || Request::is('list-rasa') || Request::is('list-pemesanan') ? 'active' : '' }} menu-link"
                             href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false"
                             aria-controls="sidebarApps">
                             <i class="ri-apps-2-line"></i>
@@ -64,6 +64,13 @@
                         <a class="nav-link {{ Request::is('list-pemesanan') ? 'active' : '' }}"
                             href="{{ route('Admin.list-pemesanan.index') }}">
                             <i class="ri-file-list-3-line"></i> <span data-key="t-forms">List Pemesanan</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('tukar') ? 'active' : '' }}"
+                            href="{{ route('Admin.tukarQr') }}">
+                            <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Tukar Qr Code</span>
                         </a>
                     </li>
                 @endif

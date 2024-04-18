@@ -6,6 +6,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
@@ -16,10 +17,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nama" => "required|max:255|string",
-            "notelp" => "required|numeric",
             "selected_product" => "required|array",
-            "alamat" => "required|string",
             "jumlah_beli" => "required|array",
         ]);
 
@@ -29,9 +27,6 @@ class OrderController extends Controller
 
         session([
             'personal_info' => [
-                'nama' => $request->input('nama'),
-                'notelp' => $request->input('notelp'),
-                'alamat' => $request->input('alamat'),
                 'selected_product' => $selectedProduct,
             ]
         ]);
@@ -46,9 +41,6 @@ class OrderController extends Controller
 
         $order = new Order();
         $order->user_id = auth()->user()->id;
-        $order->alamat = $request->input('alamat');
-        $order->nama_pemesan = $request->input('nama');
-        $order->no_telp = $request->input('notelp');
         $order->total_biaya = 0;
         $order->status = 'pending';
         $order->expired_at = $expiredAt;
@@ -88,9 +80,10 @@ class OrderController extends Controller
     {
         $selectedProductIds = session('personal_info.selected_product', []);
         $selectedProduct = Product::whereIn('id', $selectedProductIds)->get();
-        $product = Product::with('rasa', 'user')->get();
+        $user = User::all();
+        $product = Product::with('rasa')->get();
 
-        return view('user.order', compact('product', 'selectedProduct',))->with('title', 'Bitme | Order');
+        return view('user.order', compact('product', 'selectedProduct', 'user'))->with('title', 'Bitme | Order');
     }
 
     public function uploadPembayaran(Request $request, $id)

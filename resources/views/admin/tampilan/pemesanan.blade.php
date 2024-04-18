@@ -98,7 +98,7 @@
                                                             </td>
                                                         @endif
                                                         <td class="text-center">{{ $list->id_pemesanan }}</td>
-                                                        <td class="text-center">{{ $list->nama_pemesan }}</td>
+                                                        <td class="text-center">{{ $list->nama }}</td>
                                                         <td class="text-center">{{ $list->no_telp }}</td>
                                                         @if ($list->status === 'pending')
                                                             <td class="text-center">
@@ -159,7 +159,7 @@
                                                                 </span>
                                                             </td>
                                                             <td class="text-center">{{ $list->id_pemesanan }}</td>
-                                                            <td class="text-center">{{ $list->nama_pemesan }}</td>
+                                                            <td class="text-center">{{ $list->nama }}</td>
                                                             <td class="text-center">{{ $list->no_telp }}</td>
                                                             <td class="text-center">
                                                                 <button class="btn btn-md btn-warning edit-item-btn"
@@ -201,7 +201,7 @@
                                                                 </span>
                                                             </td>
                                                             <td class="text-center">{{ $list->id_pemesanan }}</td>
-                                                            <td class="text-center">{{ $list->nama_pemesan }}</td>
+                                                            <td class="text-center">{{ $list->nama }}</td>
                                                             <td class="text-center">{{ $list->no_telp }}</td>
                                                             <td class="text-center">
                                                                 <button class="btn btn-md btn-success edit-item-btn"
@@ -260,7 +260,7 @@
                                             <h6 class="card-title mb-0">Detail Pemesanan</h6>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text">Nama Pemesan : {{ $list->nama_pemesan }}</p>
+                                            <p class="card-text">Nama Pemesan : {{ $list->nama }}</p>
                                             <p class="card-text">Alamat : {{ $list->alamat }}</p>
                                             <p class="card-text">No Telp : {{ $list->no_telp }}</p>
                                             <p class="card-text">Email : {{ $list->email }}</p>

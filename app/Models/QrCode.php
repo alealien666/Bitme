@@ -15,4 +15,9 @@ class QrCode extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
+
+    public function tukar()
+    {
+        return $this->belongsTo(TukarQr::class, 'qr_id');
+    }
 }

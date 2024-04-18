@@ -16,11 +16,12 @@ class riwayatPemesananController extends Controller
             'orders.id as id_pemesanan',
             'orders.status',
             'orders.total_biaya',
-            'orders.nama_pemesan',
-            'orders.no_telp',
             'orders.bukti_pembayaran',
             'orders.expired_at',
-            'users.name as nama',
+            'users.name',
+            'users.alamat',
+            'users.no_telp',
+            'users.email'
         )->join('users', 'orders.user_id', '=', 'users.id')
             ->where('orders.user_id', Auth::id())
             ->whereNotNull('orders.expired_at')

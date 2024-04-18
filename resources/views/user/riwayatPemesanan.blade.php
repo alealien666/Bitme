@@ -129,7 +129,7 @@
                                                     <tr>
                                                         <td>Nama Pemesan</td>
                                                         <td class="ps-3"> : </td>
-                                                        <td class="ps-3"><b> {{ $list->nama_pemesan }} </b></td>
+                                                        <td class="ps-3"><b> {{ $list->name }} </b></td>
                                                     </tr>
                                                     <tr>
                                                         <td>No Telepon</td>
@@ -199,7 +199,7 @@
                                                     <tr>
                                                         <td>Nama Pemesan</td>
                                                         <td class="ps-3"> : </td>
-                                                        <td class="ps-3"><b> {{ $list->nama_pemesan }} </b></td>
+                                                        <td class="ps-3"><b> {{ $list->name }} </b></td>
                                                     </tr>
                                                     <tr>
                                                         <td>No Telepon</td>
@@ -277,7 +277,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="col-md-12">
-                                    <table>
+                                    <table class="table table-hover table-striped">
                                         <tr>
                                             <td>No pemesanan</td>
                                             <td class="ps-3"> : </td>
@@ -290,12 +290,22 @@
                                         <tr>
                                             <td>Nama Pemesan</td>
                                             <td class="ps-3"> : </td>
-                                            <td class="ps-3"><b> {{ $list->nama_pemesan }} </b></td>
+                                            <td class="ps-3"><b> {{ $list->name }} </b></td>
                                         </tr>
                                         <tr>
                                             <td>No Telepon</td>
                                             <td class="ps-3"> : </td>
                                             <td class="ps-3"><b> {{ $list->no_telp }} </b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td class="ps-3"> : </td>
+                                            <td class="ps-3"><b> {{ $list->email }} </b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat</td>
+                                            <td class="ps-3"> : </td>
+                                            <td class="ps-3"><b> {{ $list->alamat }} </b></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -307,7 +317,7 @@
                                     <ul class="list-content mx-0" id="listTotal">
                                         <li class="list-unstyled" id="listItem">
                                             <ul class="list-inline list1" style="margin-left: -30px;">
-                                                <table class="w-100">
+                                                <table class="w-100 table table-hover table-striped">
                                                     <tr class="text-center">
                                                         <th>Product</th>
                                                         <th>Rasa</th>

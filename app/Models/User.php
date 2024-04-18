@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(QRCode::class, 'user_id', 'id');
     }
+
+    public function tukar()
+    {
+        return $this->hasMany(TukarQr::class, 'user_id', 'id');
+    }
 }

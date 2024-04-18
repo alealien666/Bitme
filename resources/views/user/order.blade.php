@@ -61,11 +61,10 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="mb-3">
-                                                            <label for="billinginfo-firstName"
-                                                                class="form-label">Nama</label>
-                                                            <input type="text" class="form-control" id="nama"
-                                                                name="nama" placeholder="Enter name" value=""
-                                                                required>
+                                                            <label for="nama-user" class="form-label">Nama</label>
+                                                            <input type="text" class="form-control" id="nama-user"
+                                                                name="nama" placeholder="Enter name"
+                                                                value="{{ auth()->user()->name }}">
                                                         </div>
                                                     </div>
 
@@ -74,8 +73,8 @@
                                                             <label for="no-telp" class="form-label">No Telp
                                                                 (WhatsApp)</label>
                                                             <input type="number" class="form-control" name="notelp"
-                                                                id="no-telp" placeholder="No Telp" value=""
-                                                                required>
+                                                                id="no-telp" placeholder="No Telp"
+                                                                value="{{ auth()->user()->no_telp }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -85,14 +84,15 @@
                                                         <div class="mb-3">
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="email" class="form-control" id="email"
-                                                                value="{{ auth()->user()->email }}" disabled>
+                                                                value="{{ auth()->user()->email }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-6">
                                                         <label for="alamat" class="form-label">Alamat</label>
                                                         <input type="text" name="alamat" class="form-control"
-                                                            id="alamat" placeholder="Enter Address" required>
+                                                            id="alamat" placeholder="Enter Address"
+                                                            value="{{ auth()->user()->alamat }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,15 +116,15 @@
                                                                 <span
                                                                     class="text-muted fw-normal text-wrap mb-1 d-block"
                                                                     id="shipping-name">Nama :
-                                                                    {{ session('personal_info.nama') }}</span>
+                                                                    {{ auth()->user()->name }}</span>
                                                                 <span
                                                                     class="text-muted fw-normal text-wrap mb-1 d-block"
                                                                     id="shipping-notelp">No Telp :
-                                                                    {{ session('personal_info.notelp') }}</span>
+                                                                    {{ auth()->user()->no_telp }}</span>
                                                                 <span
                                                                     class="text-muted fw-normal text-wrap mb-1 d-block"
                                                                     id="shipping-notelp">Alamat :
-                                                                    {{ session('personal_info.alamat') }}</span>
+                                                                    {{ auth()->user()->alamat }}</span>
                                                             </label>
                                                         </div>
 
@@ -181,7 +181,7 @@
                                             </div>
 
                                             <div class="d-flex align-items-start gap-3 mt-4">
-                                                <button onclick="redirectPage()" id="button-disable"
+                                                <button onclick="redirectPage()" type="button" id="button-disable"
                                                     class="btn btn-primary btn-label right ms-auto nexttab"
                                                     data-nexttab="pills-payment-tab"><i
                                                         class="ri-bank-card-line label-icon align-middle fs-16 ms-2"></i>Continue
