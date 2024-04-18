@@ -80,8 +80,20 @@
                                                                 <td class="text-muted">{{ auth()->user()->name }}</td>
                                                             </tr>
                                                             <tr>
+                                                                <th class="ps-0" scope="row">Alamat :</th>
+                                                                <td class="text-muted">{{ auth()->user()->alamat }}</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <th class="ps-0" scope="row">E-mail :</th>
                                                                 <td class="text-muted">{{ auth()->user()->email }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="ps-0" scope="row">No Telp :</th>
+                                                                <td class="text-muted">{{ auth()->user()->no_telp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="ps-0" scope="row">Gender :</th>
+                                                                <td class="text-muted">{{ auth()->user()->gender }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Bergabung Sejak :</th>
