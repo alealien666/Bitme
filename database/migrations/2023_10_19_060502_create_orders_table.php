@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('total_biaya');
-            $table->string('nama_pemesan');
-            $table->string('no_telp');
-            $table->string('alamat');
             $table->string('bukti_pembayaran')->nullable();
             $table->enum('status', ['pending', 'approved']);
             $table->timestamp('expired_at')->nullable();

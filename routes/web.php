@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\RasaController;
 use App\Http\Controllers\Admin\listProductController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\user\OrderController;
+use App\Http\Controllers\user\profileController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\Admin\PemesananController;
 use App\Http\Controllers\user\riwayatPemesananController;
@@ -77,9 +78,14 @@ Route::group(['middleware' => 'preventBack'], function () {
 
         // user
         Route::middleware(['auth', 'role:2'])->group(function () {
+
+            //user profile 
             Route::get('/user', [HomeController::class, 'profil']);
+            Route::get('/user/edit-profile', [profileController::class, 'index']);
+            Route::post('user/update-profile/{id}', [profileController::class, 'updateProfile'])->name('user-edit-profile');
+
+            // order
             Route::get('/order', [OrderController::class, 'show'])->name('order'); //->middleware('CheckOrder');
-            Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
             Route::post('/orderr', [OrderController::class, 'store'])->name('orderProduct');
 
             // riwayat pemesanan
@@ -94,6 +100,9 @@ Route::group(['middleware' => 'preventBack'], function () {
 
             // tukar kode
             Route::post('/tukarKode', [QrCodeController::class, 'tukarCodeRedeem'])->name('tukarCode');
+
+            // logout
+            Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         });
     });
 });
