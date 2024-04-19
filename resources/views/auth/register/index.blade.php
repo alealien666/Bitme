@@ -51,7 +51,7 @@
                                     <img src="assets/images/logo-light.png" alt="" height="20">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">PT Silab</p>
+                            <p class="mt-3 fs-15 fw-medium">Bitme</p>
                         </div>
                     </div>
                 </div>
@@ -154,8 +154,8 @@
                             <p class="mb-0 text-muted">&copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Silab. Crafted with <i class="mdi mdi-heart text-danger"></i>
-                                by Tefa Polije
+                                </script> Bitme. Crafted with <i class="mdi mdi-heart text-danger"></i>
+                                by Bitme
                             </p>
                         </div>
                     </div>

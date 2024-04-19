@@ -9,7 +9,8 @@ class TukarQr extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'user_id', 'qr_id'];
+    protected $guarded = ['id'];
+    protected $table = 'tukar_qrs';
 
     public function user()
     {
@@ -18,6 +19,6 @@ class TukarQr extends Model
 
     public function qr()
     {
-        return $this->hasOne(QrCode::class, 'qr_id', 'id');
+        return $this->belongsTo(QrCode::class, 'qr_id', 'id');
     }
 }
