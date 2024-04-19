@@ -18,6 +18,6 @@ class QrCode extends Model
 
     public function tukar()
     {
-        return $this->belongsTo(TukarQr::class, 'qr_id');
+        return $this->hasMany(TukarQr::class, 'qr_id', 'id');
     }
 }
