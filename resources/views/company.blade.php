@@ -1,29 +1,4 @@
 @extends('user.layouts.nav')
-@section('search')
-    <form class="app-search d-none d-md-block" method="get">
-        @csrf
-        <div class="position-relative d-none">
-            <input type="text" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
-                id="search-options">
-            <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
-            <span class="mdi mdi-magnify search-widget-icon"></span>
-            <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                id="search-close-options"></span>
-        </div>
-    </form>
-@endsection
-@section('responsive-search')
-    <form class="p-3">
-        @csrf
-        <div class="form-group m-0">
-            <div class="input-group">
-                <input type="search" name="cari" class="form-control" placeholder="Search ..."
-                    aria-label="Recipient's username" value="{{ old('cari') }}">
-                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-            </div>
-        </div>
-    </form>
-@endsection
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link href="{{ asset('css/company.css') }}" rel="stylesheet" type="text/css" />
 {{-- hero section --}}
@@ -165,16 +140,16 @@
                 data-aos-duration="1000">
             <img src="{{ asset('img/company/bg4.jpg') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up"
                 data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg5.jpg') }}" alt="foto4" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg6.jpg') }}" alt="foto5" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg8.jpg') }}" alt="foto7" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg7.jpg') }}" alt="foto6" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg9.jpg') }}" alt="foto8" class="contentGallery"
-                data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg5.jpg') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg6.jpg') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg8.jpg') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg7.jpg') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
         </div>
     </section>
     {{-- end --}}

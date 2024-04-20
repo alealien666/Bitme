@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->boolean('redeemed')->default(false);
             $table->enum('status', ['baru', 'di tukar']);
+            $table->boolean('tukar')->default(false);
             $table->timestamps();
         });
     }
