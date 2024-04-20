@@ -265,16 +265,10 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-md-10">
-
-
                                                                                     <p>Nama Produk:
                                                                                         {{ $product->nama_product }}
                                                                                     </p>
-
-
                                                                                     <p>Harga: {{ $product->harga }}</p>
-
-
                                                                                     <p>Varian Rasa:
                                                                                         {{ $product->rasa->varian_rasa }}
                                                                                     </p>
@@ -360,7 +354,7 @@
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <img src="{{ asset('img/produk/' . $product->foto_produk) }}"
+                                                                            <img src="{{ asset($product->foto_produk) }}"
                                                                                 alt="" class="w-100">
                                                                             <div class="d-flex">
                                                                                 <input type="checkbox"
@@ -464,12 +458,8 @@
                                 class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Pesan
                             Sekarang</button>
                     </div>
-
-                    <!-- Button trigger modal -->
-
                     <!-- end col -->
                     </form>
-
                 </div>
                 <!-- end row -->
             </div>

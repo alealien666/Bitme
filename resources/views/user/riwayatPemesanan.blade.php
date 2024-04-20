@@ -157,11 +157,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <table>
-                                                    <tr>
-                                                        <td>Tanggal Pemesanan</td>
-                                                        <td class="ps-3"> : </td>
-                                                        <td class="ps-3"> <b> {{ $list->order }} </b></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <td>No pemesanan</td>
                                                         <td class="ps-3"> : </td>
@@ -392,18 +388,32 @@
         const expiredAt_{{ $list->id_pemesanan }} = dayjs("{{ $list->expired_at }}");
         dayjs.extend(window.dayjs_plugin_relativeTime)
 
+        // function updateDeadline_{{ $list->id_pemesanan }}() {
+        //     const now = dayjs()
+        //     const diff = now.diff(expiredAt_{{ $list->id_pemesanan }},
+        //         'second')
+
+        //     // console.log(diff)
+        //     const minutes = Math.floor(diff / 60)
+        //     const seconds = diff % 60
+
+        //     const timeLeft = `${minutes} menit, ${seconds} detik`;
+        //     document.getElementById("deadline_{{ $list->id_pemesanan }}").textContent = timeLeft
+        // }
         function updateDeadline_{{ $list->id_pemesanan }}() {
-            const now = dayjs()
-            const diff = now.diff(expiredAt_{{ $list->id_pemesanan }},
-                'second')
+            const deadlineElement = document.getElementById("deadline_{{ $list->id_pemesanan }}");
+            if (deadlineElement) {
+                const now = dayjs();
+                const diff = now.diff(expiredAt_{{ $list->id_pemesanan }}, 'second');
 
-            // console.log(diff)
-            const minutes = Math.floor(diff / 60)
-            const seconds = diff % 60
+                const minutes = Math.floor(diff / 60);
+                const seconds = diff % 60;
 
-            const timeLeft = `${minutes} menit, ${seconds} detik`;
-            document.getElementById("deadline_{{ $list->id_pemesanan }}").textContent = timeLeft
+                const timeLeft = `${minutes} menit, ${seconds} detik`;
+                deadlineElement.textContent = timeLeft;
+            }
         }
+
         setInterval(updateDeadline_{{ $list->id_pemesanan }}, 1000)
     @endforeach
 </script>

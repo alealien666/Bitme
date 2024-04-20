@@ -57,13 +57,12 @@ class OrderController extends Controller
                 $totalBiaya = $harga * $jumlahBeli;
                 $totalCost += $totalBiaya;
 
-                if ($totalCost >= 30000) {
-                    $totalCost -= 10000;
-                }
-
                 $product->update(['stok' => $product->stok - $jumlahBeli]);
                 $jumlahBeliArray[$selectedProductId] = $jumlahBeli;
             }
+        }
+        if ($totalCost >= 30000) {
+            $totalCost -= 10000;
         }
         $order->total_biaya = $totalCost;
         $order->save();
