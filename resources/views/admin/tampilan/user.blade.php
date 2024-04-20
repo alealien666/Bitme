@@ -50,9 +50,6 @@
                                                     width="100px" height="100px">
                                             </td>
                                             <td class="text-center">
-                                                <button class="btn btn-md p-2 btn-success edit-item-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#editModal{{ $user->id }}"><i
-                                                        class="bi bi-pencil-fill"></i></button>
                                                 <button class="btn btn-md p-2 btn-danger remove-item-btn"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#deleteModal{{ $user->id }}"><i
@@ -123,72 +120,8 @@
         </div>
     </div>
 
-    {{-- update modal --}}
+    {{-- delete modal --}}
     @foreach ($dataUser as $user)
-        <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-light p-3">
-                        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="close-modal"></button>
-                    </div>
-                    <form method="POST" action="{{ route('Admin.user.update', $user->id) }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="kategori">Pilih Role</label>
-                                <select class="form-select" id="role" name="role">
-                                    <option selected>Pilih Role</option>
-                                    <option value="0" @if ($user->role === 0) selected @endif>Super Admin
-                                    </option>
-                                    <option value="1" @if ($user->role === 1) selected @endif>Admin</option>
-                                    <option value="2" @if ($user->role === 2) selected @endif>Pelanggan
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Masukkan Nama</label>
-                                <input type="text" name="nama" id="nama" class="form-control" required
-                                    autocomplete="off" value="{{ $user->name }}" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Masukkan Email</label>
-                                <input type="email" name="email" id="email" class="form-control" required
-                                    autocomplete="off" value="{{ $user->email }}" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Masukkan Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required
-                                    autocomplete="off" value="{{ $user->password }}" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="foto" class="form-label">Pilih Avatar</label>
-                                <input type="hidden" name="oldImage" value="{{ $user->avatar }}">
-                                @if ($user->avatar)
-                                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block"
-                                        src="{{ asset('img/avatar/' . basename($user->avatar)) }}" alt="Preview Image">
-                                @else
-                                    <img class="img-preview img-fluid mb-3 col-md-6 d-block">
-                                @endif
-                                <input type="file" onchange="previewImage()" name="avatar" id="avatar"
-                                    class="form-control" autocomplete="off" />
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" name="submit" class="btn btn-primary">Edit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
         <div class="modal fade zoomIn" id="deleteModal{{ $user->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
