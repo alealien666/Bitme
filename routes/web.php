@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\QrCodeController;
-use App\Http\Controllers\GenerateQRController;
+use App\Http\Controllers\Admin\GenerateQRController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TukarQrController;
 use App\Http\Controllers\Admin\RasaController;
@@ -52,6 +52,10 @@ Route::group(['middleware' => 'preventBack'], function () {
                 Route::post('/user/add', [UserController::class, 'store'])->name('Admin.user.store');
                 Route::post('/user/update/{id}', [UserController::class, 'update'])->name('Admin.user.update');
                 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('Admin.user.destroy');
+
+                // qr
+                Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);
+                Route::get('/data-qr', [GenerateQrController::class, 'qr'])->name('Admin.createQr');
             });
             Route::middleware(['auth', 'role:0 , 1'])->group(function () {
                 // list product
@@ -109,5 +113,3 @@ Route::group(['middleware' => 'preventBack'], function () {
         });
     });
 });
-
-Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);

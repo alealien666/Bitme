@@ -24,7 +24,7 @@ class UserController extends Controller
                 $role[] = 'Pelanggan';
             }
         }
-        return view('auth.admin.tampilan.user', compact('dataUser', 'role'));
+        return view('admin.tampilan.user', compact('dataUser', 'role'));
     }
 
     public function store(Request $request)
