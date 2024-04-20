@@ -1,4 +1,4 @@
-@extends('auth.admin.layout.app')
+@extends('admin.layout.app')
 @section('title', 'Manajemen User')
 
 <style>
