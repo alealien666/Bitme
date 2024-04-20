@@ -90,8 +90,16 @@
                                                                         <select class="form-select" name="gender"
                                                                             id="gender" style="width: 250px;">
                                                                             <option selected>Pilih Gender</option>
-                                                                            <option value="laki laki">Laki Laki</option>
-                                                                            <option value="perempuan">Perempuan</option>
+                                                                            @foreach ($users as $user)
+                                                                                <option value="{{ $user->id }}"
+                                                                                    @if ($user->gender === 'laki laki') selected @endif>
+                                                                                    Laki-laki
+                                                                                </option>
+                                                                                <option value="{{ $user->id }}"
+                                                                                    @if ($user->gender === 'perempuan') selected @endif>
+                                                                                    Perempuan
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </td>
                                                                 </tr>
