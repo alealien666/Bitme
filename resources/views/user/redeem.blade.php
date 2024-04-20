@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <form action="{{ route('tukarCode') }}" method="post">
+            <form action="{{ route('tukarCode') }}" method="post" id="tukarCodeForm">
                 @csrf
                 <div class="card p-5 rounded shadow-lg mt-4">
                     <p class="text-capitalize">Semua kode yang sudah anda redeem akan terkumpul di sini</p>
@@ -33,25 +33,43 @@
                                 <th>Action</th>
                             </tr>
                             @foreach ($qrCode as $index => $item)
-                                @if ($item->status === 'baru' && $item->redeemed === 1)
+                                @if ($item->tukar === 0 && $item->redeemed === 1)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $item->code }}</td>
                                         <td>
-                                            <input type="checkbox" name="kode[]" class="form-check-input me-1"
-                                                id="kode" value="{{ $item->id }}">
+                                            <input type="checkbox" name="kode[]"
+                                                class="form-check-input me-1 kode-checkbox" id="kode{{ $index }}"
+                                                value="{{ $item->id }}">
                                         </td>
                                     </tr>
                                 @endif
                             @endforeach
                         </table>
                     </div>
-                    <button type="submit" class="btn btn-primary">Tukar Kode</button>
+                    <button type="submit" class="btn btn-primary" id="tukarKodeBtn" disabled>Tukar Kode</button>
                 </div>
             </form>
         </div>
     </div>
     @include('user.layouts.footer')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.kode-checkbox');
+            const submitBtn = document.getElementById('tukarKodeBtn');
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const checkedCheckboxes = document.querySelectorAll('.kode-checkbox:checked');
+                    if (checkedCheckboxes.length >= 30) {
+                        submitBtn.removeAttribute('disabled');
+                    } else {
+                        submitBtn.setAttribute('disabled', 'disabled');
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var successMessage = '{{ session('success') }}';

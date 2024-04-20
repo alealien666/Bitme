@@ -27,9 +27,7 @@ use App\Http\Controllers\user\riwayatPemesananController;
 */
 
 
-// sertifikat
-Route::get('sertifikat/{id}', [PemesananController::class, 'showCoa'])->name('sertifikat.show');
-Route::get('download-sertifikat/{id}', [PemesananController::class, 'downloadPdf'])->name('download-sertifikat');
+
 
 // prevent back denied
 Route::group(['middleware' => 'preventBack'], function () {
@@ -74,7 +72,8 @@ Route::group(['middleware' => 'preventBack'], function () {
 
                 // tukar kode
                 Route::get('/tukar-kode', [TukarQrController::class, 'index'])->name('Admin.tukarQr');
-                Route::post('/tukarKode/[id}', [TukarQrController::class, 'tularKode'])->name('tukar-kode.verifikasi');
+                Route::post('/tukarKode', [TukarQrController::class, 'tukarKode'])->name('tukar-kode.verifikasi');
+
                 // logout
                 Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
             });

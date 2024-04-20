@@ -46,6 +46,10 @@ class QrCodeController extends Controller
     {
         $kodes = $request->input('kode');
 
+        if (count($kodes) < 30) {
+            return redirect()->back()->with('error', 'Gagal Menukar Kode, Kamu Harus Menukar Minimal 30 Kode');
+        }
+
         foreach ($kodes as $kodeId) {
 
             TukarQr::create([
@@ -53,7 +57,7 @@ class QrCodeController extends Controller
                 'qr_id' => $kodeId,
             ]);
 
-            QrCode::where('id', $kodeId)->update(['status' => 'di tukar']);
+            QrCode::where('id', $kodeId)->update(['tukar' => true]);
         }
 
         return redirect()->back()->with('success', 'Berhasil menukarkan kode.. silahkan menunggu admin menghubungi kamu 🥰🥰');

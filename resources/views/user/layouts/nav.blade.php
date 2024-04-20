@@ -74,7 +74,18 @@
                         </button>
 
                         <!-- App Search-->
-                        @yield('search')
+                        <form class="app-search d-none d-md-block">
+                            @csrf
+                            <div class="position-relative d-none">
+                                <input type="search" method="GET" name="cari" class="form-control"
+                                    placeholder="Search..." autocomplete="off" id="search-options"
+                                    value="{{ old('cari') }}">
+                                <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
+                                <span class="mdi mdi-magnify search-widget-icon"></span>
+                                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
+                                    id="search-close-options"></span>
+                            </div>
+                        </form>
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="dropdown d-none topbar-head-dropdown header-item">
@@ -85,7 +96,18 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                                 aria-labelledby="page-header-search-dropdown" style="">
-                                @yield('responsive-search')
+                                <form class="p-3 d-none">
+                                    @csrf
+                                    <div class="form-group m-0">
+                                        <div class="input-group">
+                                            <input type="search"name="cari" class="form-control"
+                                                placeholder="Search ..." aria-label="Recipient's username"
+                                                value="{{ old('cari') }}">
+                                            <button class="btn btn-primary" type="submit"><i
+                                                    class="mdi mdi-magnify"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
