@@ -37,7 +37,7 @@ class OrderController extends Controller
                 $new_array[$key] = $value;
             }
         }
-        $expiredAt = now()->addHour();
+        $expiredAt = now()->addDay();
 
         $order = new Order();
         $order->user_id = auth()->user()->id;

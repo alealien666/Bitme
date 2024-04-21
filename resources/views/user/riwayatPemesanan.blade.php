@@ -388,28 +388,17 @@
         const expiredAt_{{ $list->id_pemesanan }} = dayjs("{{ $list->expired_at }}");
         dayjs.extend(window.dayjs_plugin_relativeTime)
 
-        // function updateDeadline_{{ $list->id_pemesanan }}() {
-        //     const now = dayjs()
-        //     const diff = now.diff(expiredAt_{{ $list->id_pemesanan }},
-        //         'second')
-
-        //     // console.log(diff)
-        //     const minutes = Math.floor(diff / 60)
-        //     const seconds = diff % 60
-
-        //     const timeLeft = `${minutes} menit, ${seconds} detik`;
-        //     document.getElementById("deadline_{{ $list->id_pemesanan }}").textContent = timeLeft
-        // }
         function updateDeadline_{{ $list->id_pemesanan }}() {
             const deadlineElement = document.getElementById("deadline_{{ $list->id_pemesanan }}");
             if (deadlineElement) {
                 const now = dayjs();
                 const diff = now.diff(expiredAt_{{ $list->id_pemesanan }}, 'second');
 
-                const minutes = Math.floor(diff / 60);
+                const hours = Math.floor(diff / 3600);
+                const minutes = Math.floor((diff % 3600) / 60);
                 const seconds = diff % 60;
 
-                const timeLeft = `${minutes} menit, ${seconds} detik`;
+                const timeLeft = `${hours} jam, ${minutes} menit, ${seconds} detik`;
                 deadlineElement.textContent = timeLeft;
             }
         }

@@ -88,18 +88,26 @@
                                                                     <th class="ps-0" scope="row">gender :</th>
                                                                     <td class="text-muted">
                                                                         <select class="form-select" name="gender"
-                                                                            id="gender" style="width: 250px;">
-                                                                            <option selected>Pilih Gender</option>
+                                                                            id="gender" style="width: 250px;" required>
+                                                                            <option value="" selected>Pilih Gender
+                                                                            </option>
+                                                                            <option value="laki laki">Laki-laki</option>
+                                                                            <option value="perempuan">Perempuan</option>
+                                                                            {{-- @php
+                                                                                $foundMale = false;
+                                                                                $foundFemale = false;
+                                                                            @endphp
                                                                             @foreach ($users as $user)
-                                                                                <option value="{{ $user->id }}"
-                                                                                    @if ($user->gender === 'laki laki') selected @endif>
-                                                                                    Laki-laki
-                                                                                </option>
-                                                                                <option value="{{ $user->id }}"
-                                                                                    @if ($user->gender === 'perempuan') selected @endif>
-                                                                                    Perempuan
-                                                                                </option>
-                                                                            @endforeach
+                                                                                @if ($user->gender === 'laki laki' && !$foundMale)
+                                                                                    <option value="{{ $user->gender }}"
+                                                                                        selected>Laki-laki</option>
+                                                                                    @php $foundMale = true; @endphp
+                                                                                @elseif ($user->gender === 'perempuan' && !$foundFemale)
+                                                                                    <option value="{{ $user->gender }}"
+                                                                                        selected>Perempuan</option>
+                                                                                    @php $foundFemale = true; @endphp
+                                                                                @endif
+                                                                            @endforeach --}}
                                                                         </select>
                                                                     </td>
                                                                 </tr>
