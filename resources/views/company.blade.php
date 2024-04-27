@@ -26,23 +26,37 @@
                     <li>
                         <p class="sub2">Apa Itu Bitme</p>
                     </li>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos necessitatibus numquam
-                        suscipit.
-                        Dolore
-                        enim architecto porro deleniti libero. Eos possimus distinctio architecto id, neque ad, dolorum
-                        maxime
-                        ullam
-                        dicta quis modi delectus aspernatur exercitationem ea, deleniti et. Rem, veritatis quasi.</p>
+                    <p>Bitme adalah snackbar yang terbuat dari labu kuning dan edamame dengan isian buah naga. Snackbar
+                        Bitme memiliki dua jenis yaitu fruit dan vegan bar. Bitme Fruit Bar memiliki varian rasa
+                        original buah naga, cokelat, dan vanila, sedangkan Bitme Vegan Bar memiliki berbagai isian
+                        sayuran di dalamnya. Bitme dibuat tanpa gluten sehingga kaya akan kandungan gizi khususnya serat
+                        dan protein, serta mengandung index glikemiks yang rendah karena menggunakan sirup agave sebagai
+                        pemanis sehingga aman dikonsumsi oleh seluruh kalangan hingga penderita diabetes dan autis.
+                        Dengan mengusung konsep “Green Economy” melaui platform web resmi dan berfokus pada ketahanan
+                        pangan berkelanjutan di Indonesia, Bitme dapat menjadi pelopor snackbar sehat yang ramah
+                        lingkungan. Jadi tunggu apalagi? Jadikan snackbar Bitme sebagai teman nyemil sehat kamu!
+                        Dapatkan sekarang melalui website ataupun mitra Bitme terdekat! Eits, jangan lupa tukarkan
+                        kemasan Bitme kamu dan dapatkan hadiah menarik dari minBites!</p>
                     <li>
                         <p class="sub2">Visi & Misi</p>
                     </li>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos necessitatibus numquam
-                        suscipit.
-                        Dolore
-                        enim architecto porro deleniti libero. Eos possimus distinctio architecto id, neque ad, dolorum
-                        maxime
-                        ullam
-                        dicta quis modi delectus aspernatur exercitationem ea, deleniti et. Rem, veritatis quasi.</p>
+                    <p>• Visi Bitme :
+                        “Menciptakan inovasi snackbar sehat yang berfokus pada ketahanan pangan berkelanjutan berkonsep
+                        “green economy” dengan memanfaatkan pangan lokal yang dapat bersaing di pasar dalam negeri
+                        hingga mancanegara dalam jangka waktu panjang</p>
+                    <p> • Misi Bitme :
+                    <ol>
+                        <li>Mengutamakan dan memberikan kualitas terbaik snackbar yang kaya akan gizi</li>
+                        <li>Berkomitmen untuk memperkuat rantai pasok pangan lokal dengan menggandeng petani lokal dan
+                            menyediakan platform untuk pemasaran produk</li>
+                        <li>Mendorong konsumen untuk berpartisipasi dalam praktik ekonomi hijau dengan cara menukar
+                            kemasan produk pada web resmi Bitme</li>
+                        <li>Melakukan riset dan pengembangan untuk menciptakan produk-produk baru yang inovatif dan
+                            ramah lingkungan</li>
+                        <li>Membuat produk instan yang dapat dikonsumsi oleh semua kalangan masyarakat</li>
+                    </ol>
+                    </p>
+
                 </ul>
             </div>
         </div>
@@ -55,11 +69,12 @@
                             <i class="ri-checkbox-circle-fill"></i>
                         </div>
                         <div class="description">
-                            <h4>Pilihan Terbaik</h4>
-                            <p>Bitme menawarkan beragam pilihan layanan lab yang sesuai dengan kebutuhan klien, mulai
-                                dari
-                                analisis kimia, mikrobiologi, hingga Fisika.Kami juga memberikan fleksibilitas dalam
-                                pemilihan metode analisis yang dapat disesuaikan dengan kebutuhan klien.</p>
+                            <h4>BPOM RI dan Halal MUI
+                            </h4>
+                            <p>"Bitme adalah pilihan yang tepat untukmu!
+                                Bitme telah terdaftar di BPOM, dan bersertifikasi Halal MUI, kami memastikan standar
+                                kualitas dan keamanan tertinggi untuk setiap gigitan. Pencapaian tersebut merupakan
+                                wujud komitmen kami yang teguh dalam memberikan yang terbaik untukmu."</p>
                         </div>
                     </li>
                     <li data-aos="fade-left" data-aos-duration="1000">
@@ -67,11 +82,15 @@
                             <i class="ri-hand-heart-line"></i>
                         </div>
                         <div class="description">
-                            <h4>Layanan Sepenuh Hati</h4>
-                            <p>Tim profesional kami selalu memberikan pelayanan yang ramah, responsif, dan berkomitmen
-                                untuk
-                                memberikan solusi terbaik bagi setiap kebutuhan analisis sample yang di pilih klien.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, asperiores?
+                            <h4>Increase nutrition
+                                Terbaik</h4>
+                            <p>Bitme adalah pilihan utama bagi mereka yang mengutamakan rasa dan nutrisi dalam setiap
+                                gigitannya. Paduan unik edamame dan labu kuning,memberikan kesegaran dan kelezatan yang
+                                tak tertandingi pada setiap gigitan Bitme. Tak hanya itu, dengan tambahan buah-buahan
+                                dan sayuran kering, juga memberikan nutrisi yang seimbang untuk mendukung gaya hidup
+                                sehat. Jadi, saat lapar datang, Bitme hadir sebagai penyelamat dengan kualitas, rasa,
+                                dan harga yang tak akan membuat kecewa.
+
                             </p>
                         </div>
                     </li>
@@ -80,12 +99,10 @@
                             <i class=" ri-flask-line"></i>
                         </div>
                         <div class="description">
-                            <h4>Kualitas Lab Terbaik</h4>
-                            <p>Bitme memiliki laboratorium yang dilengkapi dengan peralatan canggih dan terkini, serta
-                                tim
-                                ahli yang berpengalaman dalam melakukan analisis sample. Kami selalu memastikan bahwa
-                                setiap
-                                proses analisis dilakukan dengan standar kualitas tertinggi.</p>
+                            <h4>Menuju Kesahatan Pangan</h4>
+                            <p>Bitme bukan hanya sekadar snack bar biasa, tapi inovasi terbaru menuju ketahanan pangan
+                                Indonesia. Nikmati setiap gigitannya sembari mendukung kemajuan lokal. Jadilah bagian
+                                dari revolusi rasa dan keberlanjutan dengan Bitme!</p>
                         </div>
                     </li>
                     <li data-aos="fade-right" data-aos-duration="1000">
@@ -93,37 +110,15 @@
                             <i class="ri-currency-line"></i>
                         </div>
                         <div class="description">
-                            <h4>Harga Lebih Terjangkau</h4>
-                            <p>Meskipun menawarkan layanan berkualitas tinggi, Bitme juga menawarkan harga yang
-                                kompetitif
-                                dan terjangkau. Kami memahami pentingnya efisiensi biaya bagi klien, sehingga kami
-                                selalu
-                                berusaha memberikan nilai terbaik untuk setiap layanan yang kami tawarkan.</p>
+                            <h4>Ekonomis dan Mewujudkan Green economy</h4>
+                            <p>Paduan unik edamame dan labu kuning, serta tambahan buah-buahan dan sayuran kering tidak
+                                hanya memberikan kelezatan yang tak tertandingi tapi juga memberikan nutrisi yang
+                                seimbang untuk mendukung gaya hidup yang lebih sehat. Jadi, saat lapar datang, Bitme
+                                hadir sebagai penyelamat dengan kualitas, rasa, dan harga yang tak akan membuat kecewa.
+                            </p>
                         </div>
                     </li>
-                    <li data-aos="fade-right" data-aos-duration="1000">
-                        <div class="icon">
-                            <i class="ri-shield-keyhole-line"></i>
-                        </div>
-                        <div class="description">
-                            <h4>Analisis Sample Secara Akurat</h4>
-                            <p>Proses analisis sample yang dilakukan oleh Bitme dilakukan secara teliti dan akurat,
-                                menggunakan metode analisis yang teruji dan terpercaya. Kami memastikan bahwa setiap
-                                hasil
-                                analisis memberikan informasi yang akurat dan dapat diandalkan.</p>
-                        </div>
-                    </li>
-                    <li data-aos="fade-right" data-aos-duration="1000">
-                        <div class="icon">
-                            <i class="ri-file-paper-2-line"></i>
-                        </div>
-                        <div class="description">
-                            <h4>Bersertifikat AOM</h4>
-                            <p>Bitme telah memperoleh sertifikasi dari lembaga otoritas terkait, seperti sertifikasi ISO
-                                atau sertifikasi AOM, yang menunjukkan komitmen kami dalam menjaga standar kualitas dan
-                                keamanan dalam setiap layanan yang kami berikan.</p>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -134,22 +129,14 @@
     <section id="galleryProduct">
         <h2 class="titleGallery">Galeri <span>Produk</span></h2>
         <div class="gallery">
-            <img src="{{ asset('img/company/bg2.jpg') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg4.jpg') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg5.jpg') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg6.jpg') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg8.jpg') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg7.jpg') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg2.png') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg4.png') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg5.png') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg6.png') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg8.png') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg7.png') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
         </div>
     </section>
     {{-- end --}}
