@@ -13,7 +13,7 @@ body {
 }
 
 .hero {
-    background-image: url('../img/company/bg1.jpg');
+    background-image: url("../img/company/bg1.jpg");
     background-repeat: no-repeat;
     margin-top: 7.3rem;
     background-position: center;
@@ -23,7 +23,7 @@ body {
 }
 
 .hero::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -49,7 +49,7 @@ body {
 
 .heroBTn {
     display: inline-block;
-    background-color: aqua;
+    background-color: pink;
     width: 200px;
     padding: 10px;
     border-radius: 5px;
@@ -74,13 +74,12 @@ body {
 }
 
 .dimensiKiri {
-    background-image: url('../img/company/science.png');
+    background-image: url("../img/company/science.png");
     background-size: cover;
     background-position: center;
     height: 300px;
     width: 70%;
     display: block;
-
 }
 
 .dimensiKanan {
@@ -88,10 +87,10 @@ body {
 }
 
 .sub::after {
-    content: '';
+    content: "";
     width: 80px;
     height: 3px;
-    background-color: aqua;
+    background-color: pink;
     display: block;
     margin-top: 5px;
 }
@@ -107,32 +106,37 @@ body {
 }
 
 .subContent h2::after {
-    content: '';
+    content: "";
     display: block;
     width: 200px;
     height: 3px;
-    background-color: aqua;
+    background-color: pink;
     margin: 0 auto;
     margin-top: 10px;
 }
 
 .iconBox {
     overflow: auto;
+    margin: 0 auto;
 }
 
 .icon {
     font-size: 40px;
-    color: aqua;
+    color: pink;
     margin-right: 25px;
+}
+
+.iconBox ul {
+    margin: 0 auto;
 }
 
 .iconBox li {
     float: left;
     display: flex;
-    width: 300px;
-    padding: 20px;
+    width: 500px;
+    padding: 40px;
     justify-content: space-between;
-    margin: 15px;
+    margin: 0 auto;
 }
 
 li {
@@ -150,7 +154,7 @@ li {
 }
 
 .titleGallery span {
-    color: aqua;
+    color: pink;
 }
 
 .gallery {
@@ -206,7 +210,7 @@ h3 {
 }
 
 .contentWrap h5::after {
-    content: '';
+    content: "";
     width: 100px;
     height: 2px;
     border-radius: 10px;
@@ -222,12 +226,12 @@ h3 {
 }
 
 .contentWrap .link:hover {
-    color: aqua;
+    color: pink;
     transition: 0.2s;
 }
 
 .email::after {
-    content: '';
+    content: "";
     width: 98px;
     height: 1px;
     background-color: white;
@@ -253,7 +257,7 @@ h3 {
 }
 
 #logo:hover {
-    color: aqua;
+    color: pink;
     transform: rotate(70deg);
     transition: 0.5s;
 }
@@ -283,20 +287,16 @@ h3 {
     padding-top: 20px;
 }
 
-
 /* media query */
 
-
-@media(max-width:1280) {
+@media (max-width: 1280) {
     html {
         font-size: 75%;
     }
-
-
 }
 
 /* tab */
-@media(max-width:768px) {
+@media (max-width: 768px) {
     html {
         font-size: 70%;
     }
@@ -336,7 +336,7 @@ h3 {
 
 /* mobile */
 
-@media(max-width:450px) {
+@media (max-width: 450px) {
     html {
         font-size: 55%;
     }
@@ -425,5 +425,4 @@ h3 {
         width: 100px;
         margin: 0 auto;
     }
-
 }
