@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
 use App\Models\QrCode as QRCodeModel;
@@ -22,6 +23,13 @@ class GenerateQrController extends Controller
             'status' => 'baru',
         ]);
 
-        return view('qr', ['qrCodeFileName' => $filename]);
+        return view('admin.tampilan.qr', ['qrCodeFileName' => $filename]);
+    }
+
+    public function qr()
+    {
+        $kode = QrCodeModel::all();
+
+        return view('admin.tampilan.dataQr', compact('kode'))->with('title', 'Bitme | Data Qr');
     }
 }

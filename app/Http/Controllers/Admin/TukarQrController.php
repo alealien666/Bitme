@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\TukarQr;
+use App\Models\QrCode;
 use Illuminate\Http\Request;
 
 class TukarQrController extends Controller
@@ -18,7 +19,17 @@ class TukarQrController extends Controller
         return view('admin.tampilan.tukarQr', compact('codes'))->with('title', 'Bitme | Tukar Code');
     }
 
-    public function tukarKode()
+    public function tukarKode(Request $request)
     {
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'exists:qr_codes,id',
+        ]);
+
+        $ids = $request->input('ids');
+
+        QrCode::whereIn('id', $ids)->update(['status' => 'di tukar']);
+
+        return redirect()->back()->with('success', 'Berhasil Verifikasi QrCode');
     }
 }

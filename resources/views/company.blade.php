@@ -1,29 +1,4 @@
 @extends('user.layouts.nav')
-@section('search')
-<form class="app-search d-none d-md-block" method="get">
-    @csrf
-    <div class="position-relative d-none">
-        <input type="text" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
-            id="search-options">
-        <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
-        <span class="mdi mdi-magnify search-widget-icon"></span>
-        <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-            id="search-close-options"></span>
-    </div>
-</form>
-@endsection
-@section('responsive-search')
-<form class="p-3">
-    @csrf
-    <div class="form-group m-0">
-        <div class="input-group">
-            <input type="search" name="cari" class="form-control" placeholder="Search ..."
-                aria-label="Recipient's username" value="{{ old('cari') }}">
-            <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-        </div>
-    </div>
-</form>
-@endsection
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link href="{{ asset('css/company.css') }}" rel="stylesheet" type="text/css" />
 {{-- hero section --}}
@@ -154,22 +129,14 @@
     <section id="galleryProduct">
         <h2 class="titleGallery">Galeri <span>Produk</span></h2>
         <div class="gallery">
-            <img src="{{ asset('img/company/y/bg2.png') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg4.png') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg5.png') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg6.png') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg8.png') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg7.png') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up"
-                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg2.png') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg4.png') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg5.png') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg6.png') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg8.png') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg7.png') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
         </div>
     </section>
     {{-- end --}}
@@ -222,5 +189,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-AOS.init();
+    AOS.init();
 </script>

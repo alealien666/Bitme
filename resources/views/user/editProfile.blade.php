@@ -1,29 +1,4 @@
 @extends('user.layouts.nav')
-@section('search')
-    <form class="app-search d-none d-md-block">
-        @csrf
-        <div class="position-relative d-none">
-            <input type="search" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
-                id="search-options" value="{{ old('cari') }}">
-            <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
-            <span class="mdi mdi-magnify search-widget-icon"></span>
-            <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                id="search-close-options"></span>
-        </div>
-    </form>
-@endsection
-@section('responsive-search')
-    <form class="p-3 d-none">
-        @csrf
-        <div class="form-group m-0">
-            <div class="input-group">
-                <input type="search"name="cari" class="form-control" placeholder="Search ..."
-                    aria-label="Recipient's username" value="{{ old('cari') }}">
-                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-            </div>
-        </div>
-    </form>
-@endsection
 @section('konten')
     <form action="{{ route('user-edit-profile', auth()->user()->id) }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -113,10 +88,26 @@
                                                                     <th class="ps-0" scope="row">gender :</th>
                                                                     <td class="text-muted">
                                                                         <select class="form-select" name="gender"
-                                                                            id="gender" style="width: 250px;">
-                                                                            <option selected>Pilih Gender</option>
-                                                                            <option value="laki laki">Laki Laki</option>
+                                                                            id="gender" style="width: 250px;" required>
+                                                                            <option value="" selected>Pilih Gender
+                                                                            </option>
+                                                                            <option value="laki laki">Laki-laki</option>
                                                                             <option value="perempuan">Perempuan</option>
+                                                                            {{-- @php
+                                                                                $foundMale = false;
+                                                                                $foundFemale = false;
+                                                                            @endphp
+                                                                            @foreach ($users as $user)
+                                                                                @if ($user->gender === 'laki laki' && !$foundMale)
+                                                                                    <option value="{{ $user->gender }}"
+                                                                                        selected>Laki-laki</option>
+                                                                                    @php $foundMale = true; @endphp
+                                                                                @elseif ($user->gender === 'perempuan' && !$foundFemale)
+                                                                                    <option value="{{ $user->gender }}"
+                                                                                        selected>Perempuan</option>
+                                                                                    @php $foundFemale = true; @endphp
+                                                                                @endif
+                                                                            @endforeach --}}
                                                                         </select>
                                                                     </td>
                                                                 </tr>

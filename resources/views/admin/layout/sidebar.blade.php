@@ -70,7 +70,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('tukar') ? 'active' : '' }}"
                             href="{{ route('Admin.tukarQr') }}">
-                            <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Tukar Qr Code</span>
+                            <i class="ri-qr-code-fill"></i> <span data-key="t-forms">Tukar Qr Code</span>
                         </a>
                     </li>
                 @endif
@@ -80,6 +80,12 @@
                         <a class="nav-link {{ Request::is('user') ? 'active' : '' }}"
                             href="{{ route('Admin.crudUser') }}">
                             <i class="ri-group-line"></i> <span data-key="t-forms">User</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('qr') ? 'active' : '' }}"
+                            href="{{ route('Admin.createQr') }}">
+                            <i class=" ri-qr-scan-line"></i> <span data-key="t-forms">Create Qr Code</span>
                         </a>
                     </li>
                 @endif

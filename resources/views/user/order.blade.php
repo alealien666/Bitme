@@ -37,19 +37,11 @@
 
                                         <ul class="nav nav-pills nav-justified custom-nav" role="tablist">
                                             <li class="nav-item" role="presentation" id="personal-info">
-                                                <button class="nav-link fs-15 p-3 active" id="pills-bill-info-tab"
-                                                    data-bs-toggle="pill" data-bs-target="#pills-bill-info"
-                                                    type="button" role="tab" aria-controls="pills-bill-info"
-                                                    aria-selected="true"><i
-                                                        class="ri-user-2-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
+                                                <button class="nav-link fs-15 p-3 active" id="pills-bill-info-tab" data-bs-toggle="pill" data-bs-target="#pills-bill-info" type="button" role="tab" aria-controls="pills-bill-info" aria-selected="true"><i class="ri-user-2-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
                                                     Personal Info</button>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link fs-15 p-3" id="pills-bill-address-tab"
-                                                    data-bs-toggle="pill" data-bs-target="#pills-bill-address"
-                                                    type="button" role="tab" aria-controls="pills-bill-address"
-                                                    aria-selected="false" disabled><i
-                                                        class="ri-truck-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
+                                                <button class="nav-link fs-15 p-3" id="pills-bill-address-tab" data-bs-toggle="pill" data-bs-target="#pills-bill-address" type="button" role="tab" aria-controls="pills-bill-address" aria-selected="false" disabled><i class="ri-truck-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
                                                     Detail Pesanan</button>
                                             </li>
                                         </ul>
@@ -62,9 +54,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="mb-3">
                                                             <label for="nama-user" class="form-label">Nama</label>
-                                                            <input type="text" class="form-control" id="nama-user"
-                                                                name="nama" placeholder="Enter name"
-                                                                value="{{ auth()->user()->name }}">
+                                                            <input type="text" class="form-control" id="nama-user" name="nama" placeholder="Enter name" value="{{ auth()->user()->name }}">
                                                         </div>
                                                     </div>
 
@@ -72,9 +62,7 @@
                                                         <div class="mb-3">
                                                             <label for="no-telp" class="form-label">No Telp
                                                                 (WhatsApp)</label>
-                                                            <input type="number" class="form-control" name="notelp"
-                                                                id="no-telp" placeholder="No Telp"
-                                                                value="{{ auth()->user()->no_telp }}">
+                                                            <input type="number" class="form-control" name="notelp" id="no-telp" placeholder="No Telp" value="{{ auth()->user()->no_telp }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -83,16 +71,13 @@
                                                     <div class="col-sm-6">
                                                         <div class="mb-3">
                                                             <label for="email" class="form-label">Email</label>
-                                                            <input type="email" class="form-control" id="email"
-                                                                value="{{ auth()->user()->email }}">
+                                                            <input type="email" class="form-control" id="email" value="{{ auth()->user()->email }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-6">
                                                         <label for="alamat" class="form-label">Alamat</label>
-                                                        <input type="text" name="alamat" class="form-control"
-                                                            id="alamat" placeholder="Enter Address"
-                                                            value="{{ auth()->user()->alamat }}">
+                                                        <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Enter Address" value="{{ auth()->user()->alamat }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,20 +95,13 @@
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="form-check">
                                                             <label class="form-check-label" for="shippingAddress01">
-                                                                <span
-                                                                    class="mb-4 fw-semibold d-block">{{ auth()->user()->email }}</span><br>
+                                                                <span class="mb-4 fw-semibold d-block">{{ auth()->user()->email }}</span><br>
 
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-name">Nama :
+                                                                <span class="text-muted fw-normal text-wrap mb-1 d-block" id="shipping-name">Nama :
                                                                     {{ auth()->user()->name }}</span>
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-notelp">No Telp :
+                                                                <span class="text-muted fw-normal text-wrap mb-1 d-block" id="shipping-notelp">No Telp :
                                                                     {{ auth()->user()->no_telp }}</span>
-                                                                <span
-                                                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                                                    id="shipping-notelp">Alamat :
+                                                                <span class="text-muted fw-normal text-wrap mb-1 d-block" id="shipping-notelp">Alamat :
                                                                     {{ auth()->user()->alamat }}</span>
                                                             </label>
                                                         </div>
@@ -132,12 +110,10 @@
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="form-check" id="scroll">
                                                             <label class="form-check-label" for="shippingAddress02">
-                                                                <span
-                                                                    class="mb-4 fw-semibold d-block text-uppercase">Detail
+                                                                <span class="mb-4 fw-semibold d-block text-uppercase">Detail
                                                                     Produk Yang Di Beli</span><br>
                                                                 @foreach ($selectedProduct as $item)
-                                                                <span class="text-muted mb-2 d-block"
-                                                                    id="shipping-product">
+                                                                <span class="text-muted mb-2 d-block" id="shipping-product">
                                                                     Nama Product: {{ $item->nama_product }}<br>
                                                                     Rasa: {{ $item->rasa->varian_rasa }}<br>
                                                                     Harga: Rp.
@@ -165,12 +141,10 @@
                                                                         - Rp 10.000
                                                                         @endif
                                                                     </span>
-                                                                    <span
-                                                                        class="fs-21 mt-2 text-wrap d-block fw-semibold">Rp:
+                                                                    <span class="fs-21 mt-2 text-wrap d-block fw-semibold">Rp:
                                                                         {{ number_format(session('total_biaya'), 0, ',', '.') }}
                                                                     </span>
-                                                                    <span
-                                                                        class="text-muted fw-normal text-wrap d-block">Expired
+                                                                    <span class="text-muted fw-normal text-wrap d-block">Expired
                                                                         In 1 Hours</span>
                                                                 </label>
                                                             </div>
@@ -180,10 +154,7 @@
                                             </div>
 
                                             <div class="d-flex align-items-start gap-3 mt-4">
-                                                <button onclick="redirectPage()" type="button" id="button-disable"
-                                                    class="btn btn-primary btn-label right ms-auto nexttab"
-                                                    data-nexttab="pills-payment-tab"><i
-                                                        class="ri-bank-card-line label-icon align-middle fs-16 ms-2"></i>Continue
+                                                <button onclick="redirectPage()" type="button" id="button-disable" class="btn btn-primary btn-label right ms-auto nexttab" data-nexttab="pills-payment-tab"><i class="ri-bank-card-line label-icon align-middle fs-16 ms-2"></i>Continue
                                                     to Payment</button>
                                             </div>
                                         </div>
@@ -235,25 +206,18 @@
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">
                                                                         Detail Produk
                                                                     </h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="d-flex">
-                                                                        <input type="checkbox" name="selected_product[]"
-                                                                            value="{{ $product->id }}"
-                                                                            data-harga="{{ $product->harga }}"
-                                                                            data-indeks="{{ $index }}"
-                                                                            class="form-check-input ms-3 p-2">
+                                                                        <input type="checkbox" name="selected_product[]" value="{{ $product->id }}" data-harga="{{ $product->harga }}" data-indeks="{{ $index }}" class="form-check-input ms-3 p-2">
                                                                         <p class="ms-2">Checklist untuk
                                                                             memesan produk ini
                                                                         </p>
@@ -261,16 +225,10 @@
 
                                                                     <div class="row">
                                                                         <div class="col-md-10">
-
-
                                                                             <p>Nama Produk:
                                                                                 {{ $product->nama_product }}
                                                                             </p>
-
-
                                                                             <p>Harga: {{ $product->harga }}</p>
-
-
                                                                             <p>Varian Rasa:
                                                                                 {{ $product->rasa->varian_rasa }}
                                                                             </p>
@@ -288,20 +246,12 @@
                                                                         <!-- <p class="text-center mt-5">Jumlah</p> -->
                                                                         <div class="col-md-2">
                                                                             <div class="jumlah">
-                                                                                <button type="button" class="min"><i
-                                                                                        class="bi bi-dash-lg"
-                                                                                        data-indeks="{{ $index }}"></i></button>
-                                                                                <input type="hidden"
-                                                                                    name="jumlah_beli[{{ $product->id }}]"
-                                                                                    value="0"
-                                                                                    data-indeks="{{ $index }}">
+                                                                                <button type="button" class="min"><i class="bi bi-dash-lg" data-indeks="{{ $index }}"></i></button>
+                                                                                <input type="hidden" name="jumlah_beli[{{ $product->id }}]" value="0" data-indeks="{{ $index }}">
                                                                                 <span class="count">0</span>
-                                                                                <button type="button" class="plus"
-                                                                                    data-indeks="{{ $index }}"><i
-                                                                                        class="bi bi-plus-lg"></i></button>
+                                                                                <button type="button" class="plus" data-indeks="{{ $index }}"><i class="bi bi-plus-lg"></i></button>
                                                                             </div>
-                                                                            <p class="text-muted text-center" id="stok"
-                                                                                data-stok="{{ $product->stok }}">
+                                                                            <p class="text-muted text-center" id="stok" data-stok="{{ $product->stok }}">
                                                                                 Stok:
                                                                                 {{ $product->stok }}
                                                                             </p>
@@ -310,8 +260,7 @@
 
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary"
-                                                                        data-bs-dismiss="modal">Pesan</button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Pesan</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -330,15 +279,12 @@
                                                 </td>
                                                 <td>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary w-100  "
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal_{{ $index }}">
+                                                    <button type="button" class="btn btn-primary w-100  " data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $index }}">
                                                         Detail Produk
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal_{{ $index }}" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal_{{ $index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -346,19 +292,12 @@
                                                                         Detail
                                                                         Produk
                                                                     </h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <img src="{{ asset('img/produk/' . $product->foto_produk) }}"
-                                                                        alt="" class="w-100">
+                                                                    <img src="{{ asset('img/produk/' . $product->foto_produk) }}" alt="" class="w-100">
                                                                     <div class="d-flex">
-                                                                        <input type="checkbox" name="selected_product[]"
-                                                                            value="{{ $product->id }}"
-                                                                            data-harga="{{ $product->harga }}"
-                                                                            data-indeks="{{ $index }}"
-                                                                            class="form-check-input ms-3 p-2">
+                                                                        <input type="checkbox" name="selected_product[]" value="{{ $product->id }}" data-harga="{{ $product->harga }}" data-indeks="{{ $index }}" class="form-check-input ms-3 p-2">
                                                                         <p class="ms-2">Checklist untuk
                                                                             memesan produk ini
                                                                         </p>
@@ -385,20 +324,84 @@
                                                                         </p>
                                                                         <div class="col-md-8">
                                                                             <div class="jumlah">
-                                                                                <button type="button" class="min"><i
-                                                                                        class="bi bi-dash-lg"
-                                                                                        data-indeks="{{ $index }}"></i></button>
-                                                                                <input type="hidden"
-                                                                                    name="jumlah_beli[{{ $product->id }}]"
-                                                                                    value="0"
-                                                                                    data-indeks="{{ $index }}">
+                                                                                <button type="button" class="min"><i class="bi bi-dash-lg" data-indeks="{{ $index }}"></i></button>
+                                                                                <input type="hidden" name="jumlah_beli[{{ $product->id }}]" value="0" data-indeks="{{ $index }}">
                                                                                 <span class="count">0</span>
-                                                                                <button type="button" class="plus"
-                                                                                    data-indeks="{{ $index }}"><i
-                                                                                        class="bi bi-plus-lg"></i></button>
+                                                                                <button type="button" class="plus" data-indeks="{{ $index }}"><i class="bi bi-plus-lg"></i></button>
                                                                             </div>
-                                                                            <p class="text-muted text-center" id="stok"
-                                                                                data-stok="{{ $product->stok }}">
+                                                                            <p class="text-muted text-center" id="stok" data-stok="{{ $product->stok }}">
+                                                                                Stok:
+                                                                                {{ $product->stok }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                </td>
+                                            </tr>
+                                            @else
+                                            <tr id="selected_product" class="border-bottom">
+                                                <td>
+                                                    <h5 class="fs-15" name="nama_product">
+                                                        {{ $product->nama_product }}
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <p>{{ $product->stok }}</p>
+                                                </td>
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary w-100  " data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $index }}">
+                                                        Detail Produk
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal_{{ $index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                        Detail
+                                                                        Produk
+                                                                    </h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="{{ asset($product->foto_produk) }}" alt="" class="w-100">
+                                                                    <div class="d-flex">
+                                                                        <input type="checkbox" name="selected_product[]" value="{{ $product->id }}" data-harga="{{ $product->harga }}" data-indeks="{{ $index }}" class="form-check-input ms-3 p-2">
+                                                                        <p class="ms-2">Checklist untuk
+                                                                            memesan produk ini
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-10">
+                                                                            <p>Nama Produk:
+                                                                                {{ $product->nama_product }}
+                                                                            </p>
+                                                                            <p>Harga: {{ $product->harga }}
+                                                                            </p>
+                                                                            <p>Varian Rasa:
+                                                                                {{ $product->rasa->varian_rasa }}
+                                                                            </p>
+                                                                            <p>Deskripsi:
+                                                                                {{ $product->deskripsi }}
+                                                                            </p>
+                                                                            <p>Tanggal Expired:
+                                                                                {{ $product->tanggal_expired }}
+                                                                            </p>
+                                                                        </div>
+                                                                        <p class="text-center mt-5">Jumlah
+                                                                        </p>
+                                                                        <div class="col-md-2">
+                                                                            <div class="jumlah">
+                                                                                <button type="button" class="min"><i class="bi bi-dash-lg" data-indeks="{{ $index }}"></i></button>
+                                                                                <input type="hidden" name="jumlah_beli[{{ $product->id }}]" value="0" data-indeks="{{ $index }}">
+                                                                                <span class="count">0</span>
+                                                                                <button type="button" class="plus" data-indeks="{{ $index }}"><i class="bi bi-plus-lg"></i></button>
+                                                                            </div>
+                                                                            <p class="text-muted text-center" id="stok" data-stok="{{ $product->stok }}">
                                                                                 Stok:
                                                                                 {{ $product->stok }}
                                                                             </p>
@@ -406,68 +409,63 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary"
-                                                                        data-bs-dismiss="modal">Pilih</button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Pilih</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="table-responsive table-card pt-4">
-                                    <table class="table table-borderless align-middle mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td class="fw-semibold" colspan="2">Sub Total :</td>
-                                                <td class="fw-semibold text-end" id="subtotal"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fw-semibold" colspan="2">Diskon :</td>
-                                                <td class="fw-semibold text-end text-danger" id="diskon"> </td>
-                                            </tr>
-                                            <tr class="table-active">
-                                                <th colspan="2">Total (Rp) :</th>
-                                                <td class="text-end fw-semibold" name="totalHarga" id="total">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
-                            <!-- end card body -->
+                            </td>
+                            </tr>
+                            @endif
+                            @endforeach
+                            </tbody>
+                            </table>
                         </div>
-                        <!-- end card -->
-
+                        <div class="table-responsive table-card pt-4">
+                            <table class="table table-borderless align-middle mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-semibold" colspan="2">Sub Total :</td>
+                                        <td class="fw-semibold text-end" id="subtotal"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-semibold" colspan="2">Diskon :</td>
+                                        <td class="fw-semibold text-end text-danger" id="diskon"> </td>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th colspan="2">Total (Rp) :</th>
+                                        <td class="text-end fw-semibold" name="totalHarga" id="total">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <button type="submit" class="btn btn-primary btn-label right" id="buttonPesan"
-                            onclick="disableProfile()"><i
-                                class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Pesan
-                            Sekarang</button>
-                    </div>
-
-                    <!-- Button trigger modal -->
-
-                    <!-- end col -->
-                    </form>
-
+                    <!-- end card body -->
                 </div>
-                <!-- end row -->
+                <!-- end card -->
+
             </div>
-            <!-- container-fluid -->
+            <div class="d-flex align-items-center mb-3">
+                <button type="submit" class="btn btn-primary btn-label right" id="buttonPesan" onclick="disableProfile()"><i class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Pesan
+                    Sekarang</button>
+            </div>
+            <!-- end col -->
+            </form>
         </div>
-
-        <!-- End Page-content -->
-
-        @include('user.layouts.footer')
-        <!-- end main content-->
-
+        <!-- end row -->
     </div>
-    <!-- END layout-wrapper -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <!-- container-fluid -->
+</div>
+
+<!-- End Page-content -->
+
+@include('user.layouts.footer')
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>

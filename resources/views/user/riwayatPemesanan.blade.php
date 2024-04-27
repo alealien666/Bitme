@@ -1,29 +1,4 @@
 @extends('user.layouts.nav')
-@section('search')
-    <form class="app-search d-none d-md-block" method="get">
-        @csrf
-        <div class="position-relative d-none">
-            <input type="search" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
-                id="search-options" value="{{ old('cari') }}">
-            <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
-            <span class="mdi mdi-magnify search-widget-icon"></span>
-            <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                id="search-close-options"></span>
-        </div>
-    </form>
-@endsection
-@section('responsive-search')
-    <form class="p-3 d-none">
-        @csrf
-        <div class="form-group m-0">
-            <div class="input-group">
-                <input type="search" name="cari" class="form-control" placeholder="Search ..."
-                    aria-label="Recipient's username" value="{{ old('cari') }}">
-                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-            </div>
-        </div>
-    </form>
-@endsection
 @section('konten')
     <style>
         #listTotal {
@@ -182,11 +157,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <table>
-                                                    <tr>
-                                                        <td>Tanggal Pemesanan</td>
-                                                        <td class="ps-3"> : </td>
-                                                        <td class="ps-3"> <b> {{ $list->order }} </b></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <td>No pemesanan</td>
                                                         <td class="ps-3"> : </td>
@@ -418,17 +389,20 @@
         dayjs.extend(window.dayjs_plugin_relativeTime)
 
         function updateDeadline_{{ $list->id_pemesanan }}() {
-            const now = dayjs()
-            const diff = now.diff(expiredAt_{{ $list->id_pemesanan }},
-                'second')
+            const deadlineElement = document.getElementById("deadline_{{ $list->id_pemesanan }}");
+            if (deadlineElement) {
+                const now = dayjs();
+                const diff = now.diff(expiredAt_{{ $list->id_pemesanan }}, 'second');
 
-            // console.log(diff)
-            const minutes = Math.floor(diff / 60)
-            const seconds = diff % 60
+                const hours = Math.floor(diff / 3600);
+                const minutes = Math.floor((diff % 3600) / 60);
+                const seconds = diff % 60;
 
-            const timeLeft = `${minutes} menit, ${seconds} detik`;
-            document.getElementById("deadline_{{ $list->id_pemesanan }}").textContent = timeLeft
+                const timeLeft = `${hours} jam, ${minutes} menit, ${seconds} detik`;
+                deadlineElement.textContent = timeLeft;
+            }
         }
+
         setInterval(updateDeadline_{{ $list->id_pemesanan }}, 1000)
     @endforeach
 </script>

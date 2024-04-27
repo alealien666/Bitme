@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\QrCodeController;
-use App\Http\Controllers\GenerateQRController;
+use App\Http\Controllers\Admin\GenerateQRController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TukarQrController;
 use App\Http\Controllers\Admin\RasaController;
@@ -27,9 +27,7 @@ use App\Http\Controllers\user\riwayatPemesananController;
 */
 
 
-// sertifikat
-Route::get('sertifikat/{id}', [PemesananController::class, 'showCoa'])->name('sertifikat.show');
-Route::get('download-sertifikat/{id}', [PemesananController::class, 'downloadPdf'])->name('download-sertifikat');
+
 
 // prevent back denied
 Route::group(['middleware' => 'preventBack'], function () {
@@ -54,6 +52,10 @@ Route::group(['middleware' => 'preventBack'], function () {
                 Route::post('/user/add', [UserController::class, 'store'])->name('Admin.user.store');
                 Route::post('/user/update/{id}', [UserController::class, 'update'])->name('Admin.user.update');
                 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('Admin.user.destroy');
+
+                // qr
+                Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);
+                Route::get('/data-qr', [GenerateQrController::class, 'qr'])->name('Admin.createQr');
             });
             Route::middleware(['auth', 'role:0 , 1'])->group(function () {
                 // list product
@@ -74,7 +76,8 @@ Route::group(['middleware' => 'preventBack'], function () {
 
                 // tukar kode
                 Route::get('/tukar-kode', [TukarQrController::class, 'index'])->name('Admin.tukarQr');
-                Route::post('/tukarKode/[id}', [TukarQrController::class, 'tularKode'])->name('tukar-kode.verifikasi');
+                Route::post('/tukarKode', [TukarQrController::class, 'tukarKode'])->name('tukar-kode.verifikasi');
+
                 // logout
                 Route::get('/metu', [LoginController::class, 'logout'])->name('metu');
             });
@@ -110,5 +113,3 @@ Route::group(['middleware' => 'preventBack'], function () {
         });
     });
 });
-
-Route::get('/code', [GenerateQrController::class, 'generateAndShowQrCode']);

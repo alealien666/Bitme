@@ -1,29 +1,4 @@
 @extends('user.layouts.nav')
-@section('search')
-    <form class="app-search d-none d-md-block">
-        @csrf
-        <div class="position-relative d-none">
-            <input type="search" method="GET" name="cari" class="form-control" placeholder="Search..." autocomplete="off"
-                id="search-options" value="{{ old('cari') }}">
-            <button type="submit" class="btn btn-primary ms-3 ">Cari</button>
-            <span class="mdi mdi-magnify search-widget-icon"></span>
-            <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                id="search-close-options"></span>
-        </div>
-    </form>
-@endsection
-@section('responsive-search')
-    <form class="p-3 d-none">
-        @csrf
-        <div class="form-group m-0">
-            <div class="input-group">
-                <input type="search"name="cari" class="form-control" placeholder="Search ..."
-                    aria-label="Recipient's username" value="{{ old('cari') }}">
-                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-            </div>
-        </div>
-    </form>
-@endsection
 @section('konten')
     <div class="page-content">
         <div class="container">
@@ -35,7 +10,7 @@
             <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
                 <div class="row g-4">
                     <div class="col-auto">
-                        <div class="avatar-lg">
+                        <div class="avatar-xl">
                             <img class="rounded-circle img-thumbnail"
                                 src="{{ auth()->user()->avatar == null ? url(asset('img/avatar/no-pic.png')) : (filter_var(auth()->user()->avatar, FILTER_VALIDATE_URL) ? auth()->user()->avatar : url(asset(auth()->user()->avatar))) }}"
                                 alt="pp">
