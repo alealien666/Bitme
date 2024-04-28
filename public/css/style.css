@@ -27,7 +27,7 @@
 .jumlah {
     display: flex;
     align-items: center;
-    border: 1px solid #5ea3cb;
+    border: 1px solid #FEC7B4;
     border-radius: 4px;
 }
 
@@ -42,18 +42,18 @@
 
 .jumlah .plus {
     border-radius: 0 3px 3px 0;
-    border-left: 1px solid #5ea3cb;
+    border-left: 1px solid #FEC7B4;
     padding: 10px;
 }
 
 .jumlah .min {
     border-radius: 3px 0 0 3px;
-    border-right: 1px solid #5ea3cb;
+    border-right: 1px solid #FEC7B4;
     padding: 10px;
 }
 
 .jumlah button:hover {
-    background-color: #5ea3cb;
+    background-color: #FEC7B4;
     transition: 0.4s;
     color: white;
 }
@@ -89,6 +89,27 @@
 .hx {
     cursor: not-allowed !important;
     opacity: 0.4;
+}
+
+.btn-primary {
+    background-color: #FEC7B4 !important;
+    border: none !important;
+}
+
+.bg-soft-primary {
+    background-color: #FEC7B4 !important;
+}
+
+.text-primary {
+    color: #e88868 !important;
+}
+
+.oi {
+    color: #FEC7B4 !important;
+}
+
+.profile-wid-bg {
+    background-color: #FEC7B4 !important;
 }
 
 @media(max-width: 450px) {

@@ -129,14 +129,20 @@
     <section id="galleryProduct">
         <h2 class="titleGallery">Galeri <span>Produk</span></h2>
         <div class="gallery">
-            <img src="{{ asset('img/company/y/bg2.png') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg3.jpg') }}" alt="foto2" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg4.png') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg5.png') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg6.png') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg8.png') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg7.png') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
-            <img src="{{ asset('img/company/y/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up" data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg2.png') }}" alt="foto1" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg4.png') }}" alt="foto3" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg5.png') }}" alt="foto4" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg6.png') }}" alt="foto5" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg8.png') }}" alt="foto7" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg7.png') }}" alt="foto6" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
+            <img src="{{ asset('img/company/y/bg9.jpg') }}" alt="foto8" class="contentGallery" data-aos="zoom-in-up"
+                data-aos-duration="1000">
         </div>
     </section>
     {{-- end --}}

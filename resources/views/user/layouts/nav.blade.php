@@ -128,40 +128,41 @@
                         </div>
 
                         @guest
-                        <a class="nav-link menu-link" href="/login" aria-controls="sidebarDashboards">
-                            <i class="bi bi-box-arrow-in-right"></i> <span data-key="t-dashboards">Login</span>
-                        </a>
+                            <a class="nav-link menu-link" href="/login" aria-controls="sidebarDashboards">
+                                <i class="bi bi-box-arrow-in-right text-primary"></i> <span data-key="t-dashboards"
+                                    class="text-primary">Login</span>
+                            </a>
                         @else
-                        <div class="dropdown ms-sm-3 header-item topbar-user pe-4">
-                            <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <span class="d-flex align-items-center">
-                                    <img class="rounded-circle header-profile-user"
-                                        src="{{ auth()->user()->avatar == null ? url(asset('img/avatar/no-pic.png')) : (filter_var(auth()->user()->avatar, FILTER_VALIDATE_URL) ? auth()->user()->avatar : url(asset(auth()->user()->avatar))) }}"
-                                        alt="pp">
-                                    <span class="text-start ms-xl-2">
-                                        <span
-                                            class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}</span>
+                            <div class="dropdown ms-sm-3 header-item topbar-user pe-4">
+                                <button type="button" class="btn" id="page-header-user-dropdown"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-flex align-items-center">
+                                        <img class="rounded-circle header-profile-user"
+                                            src="{{ auth()->user()->avatar == null ? url(asset('img/avatar/no-pic.png')) : (filter_var(auth()->user()->avatar, FILTER_VALIDATE_URL) ? auth()->user()->avatar : url(asset(auth()->user()->avatar))) }}"
+                                            alt="pp">
+                                        <span class="text-start ms-xl-2">
+                                            <span
+                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}</span>
+                                        </span>
                                     </span>
-                                </span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <h6 class="dropdown-header">Welcome {{ auth()->user()->name }}</h6>
-                                <a class="dropdown-item" href="/user"><i
-                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Profile</span></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/user/edit-profile"><span
-                                        class="badge bg-soft-success text-success mt-1 float-end">New</span><i
-                                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Settings</span></a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" method="get"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout"
-                                        onclick="return confirm('apakah anda yakin ingin keluar..?')">Logout</span></a>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <h6 class="dropdown-header">Welcome {{ auth()->user()->name }}</h6>
+                                    <a class="dropdown-item" href="/user"><i
+                                            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                            class="align-middle">Profile</span></a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/user/edit-profile"><span
+                                            class="badge bg-soft-success text-success mt-1 float-end">New</span><i
+                                            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                                            class="align-middle">Settings</span></a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" method="get"><i
+                                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                            class="align-middle" data-key="t-logout"
+                                            onclick="return confirm('apakah anda yakin ingin keluar..?')">Logout</span></a>
+                                </div>
                             </div>
-                        </div>
                         @endguest
                     </div>
                 </div>
@@ -175,7 +176,8 @@
                     </div>
                     <ul class="navbar-nav m-auto" id="navbar-nav" style="width: 500px;">
                         <li class="nav-item">
-                            <a class="nav-link{{ $title === 'Silab | Home' ? 'active' : '' }}" id="link" href="/home">
+                            <a class="nav-link{{ $title === 'Silab | Home' ? 'active' : '' }}" id="link"
+                                href="/home">
                                 Home </a>
                         </li>
                         <li class="nav-item">
@@ -194,11 +196,11 @@
                             </a>
                         </li>
                         @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="/redeem" id="link">
-                                Redeem
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/redeem" id="link">
+                                    Redeem
+                                </a>
+                            </li>
                         @endauth
                     </ul>
                 </div>
@@ -213,13 +215,13 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         @if ($errors->any())
-        <script>
-        callAlert('error', 'gagal', '{{ $errors->all()[0] }}');
-        </script>
+            <script>
+                callAlert('error', 'gagal', '{{ $errors->all()[0] }}');
+            </script>
         @elseif (session('success'))
-        <script>
-        callAlert('success', 'berhasil', "{{ session('success') }}");
-        </script>
+            <script>
+                callAlert('success', 'berhasil', "{{ session('success') }}");
+            </script>
         @endif
 
         <div class="container">

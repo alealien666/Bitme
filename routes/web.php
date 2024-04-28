@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\QrCodeController;
-use App\Http\Controllers\Admin\GenerateQRController;
+use App\Http\Controllers\Admin\GenerateQrController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TukarQrController;
 use App\Http\Controllers\Admin\RasaController;
